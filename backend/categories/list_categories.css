@@ -1,0 +1,36 @@
+.category_list{
+    margin-top: 30px;
+}
+.category_insert{
+  display: flex;
+  justify-content: end;
+}
+.action{
+    float: right;
+    padding: 0 20px;
+}
+.category_name{
+    font-size: 18px;
+    font-weight: 600;
+}
+.category_id{
+    font-weight: 700;
+    color: green;
+}
+.search_categories{
+    display: flex;
+    justify-content: end;
+    margin: 5px 0;
+}
+#search_category{
+    width: 350px;
+}
+#search_category::placeholder{
+    font-style: italic;
+}
+.error_search{
+    text-align: center;
+    font-size: 25px;
+    height: 240px;
+    line-height: 240px;
+}

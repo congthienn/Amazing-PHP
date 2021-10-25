@@ -1,0 +1,38 @@
+.staff_list{
+    margin-top: 30px;
+}
+.staff_list--header{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 5px;
+}
+.action{
+    float: right;
+}
+.staff_position{
+    font-style: italic;
+    font-size: 14px;
+}
+.staff_number{
+    font-weight: 600;
+}
+.staff_email{
+    font-style: italic;
+}
+.search_staff{
+    margin: 5px 0;
+    display: flex;
+    justify-content: end;
+}
+#search_staff{
+    width: 350px;
+}
+::placeholder{
+    font-style: italic;
+}
+.error_search{
+    text-align: center;
+    font-size: 25px;
+    height: 240px;
+    line-height: 240px;
+}

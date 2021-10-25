@@ -1,0 +1,148 @@
+.form_insert{
+    margin-top: 30px;
+}
+.customer_information{
+    width: 68%;
+    margin-top: 30px;
+}
+.customer_day_location{
+    display: flex;
+}
+.delivery_date{
+    margin: 0 20px;
+}
+.date_add input{
+    background-color: transparent !important;
+}
+.location{
+    flex: 1;
+}
+.date_add, .delivery_date{
+    width: 250px;
+}
+.payment_status--radio{
+    display: flex;
+    margin-top: 5px;
+}
+.paymented ,.unpaid{
+    font-style: italic;
+}
+.paymented{
+    margin-right: 30px;
+}
+.pay--item input{
+    position: relative;
+    top: 1px;
+}
+#delivery{
+    width: 220px;
+}
+.location{
+    margin-top: 15px;
+    width: 100%;
+    min-height: 100px;
+}
+.location_content{
+    margin-top: 10px;
+    display: none;
+}
+.company_location{
+    margin-top: 5px;
+    font-size: 16px;
+    font-style: italic;
+    display: none;
+}
+.location_content.show{
+    display: block;
+}
+.company_location.show{
+    display: block;
+}
+.location select{
+    width: 250px;
+}
+#stress{
+    width: 250px;
+}
+.fist-item{
+    margin-right: 20px;
+}
+.location_province_district{
+    display: flex;
+}
+.location_ward{
+    display: flex;
+}
+.order_information{
+    display: flex;
+    height: 50px;
+}
+.list_category,.list_product{
+    width: 290px;
+}
+.list_product_order{
+    width: 1000px;
+}
+.quantity{
+    position: relative;
+    top: -24px;
+    width: 150px;
+}
+.list_product{
+    margin: 0 20px;
+}
+.product_price{
+    width: 120px;
+    margin-right: 20px;
+}
+.product_price input{
+    background-color: transparent !important;
+}
+.table{
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin-top: 5px;
+}
+#error_product_name ,#error_product_quantity{
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 3px;
+    color: #dc3545;
+}
+.quantity_order{
+    font-weight: 600;
+    color: blue;
+}
+.sum_price{
+    font-weight: 600;
+    color: green;
+}
+#text_location{
+    width: 520px;
+    background-color: transparent !important;
+    color: black !important;
+    font-weight: 600;
+    font-style: italic;
+}
+#text_location_company{
+    width: 770px;
+    background-color: transparent !important;
+    color: black !important;
+    font-weight: 600;
+    font-style: italic;
+}
+#money_sum_order{
+    border: none;
+    text-align: center;
+    width: 0px;
+}
+#money_sum_order:focus{
+    outline: none;
+}
+#voucher{
+    width: 250px;
+}
+.voucher{
+    margin-top: 5px;
+}

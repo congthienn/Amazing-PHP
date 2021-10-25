@@ -1,0 +1,114 @@
+.order_list{
+    margin-top: 30px;
+}
+.order_list--header{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 5px;
+}
+.pay-item{
+    font-style: italic;
+    font-weight: 600;
+    font-size: 14px;
+}
+.paymented{
+    color: green;
+}
+.paying{
+    color: red;
+}
+.order_day{
+    font-weight: 700;
+    color: blue;
+}
+.money_sum{
+    font-size: 17px;
+    font-weight: 600;
+    color: green;
+}
+.order_container{
+    position: fixed;
+    top: 0;right: 0;left: 0;bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 4;
+}
+.order_content{
+    background-color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: calc((100% - 850px)/2);
+    width: 850px;
+    padding:40px 60px;
+    overflow: auto;
+    z-index: 10;
+    animation: chuyendong linear 0.2s;
+}
+@keyframes chuyendong{
+    from{
+        transform: scale(0);
+    }to{
+        transform: scale(1);
+    }
+}
+.order_header{
+    font-size: 28px;
+    font-weight: 600;
+}
+.order_information--item .table{
+    margin-top: 15px;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+.order_information{
+    margin-top: 20px;
+}
+.order_information--item{
+    margin: 6px 0;
+}
+.order_id{
+    font-size: 24px;
+    font-weight: 600;
+    color: blue;
+}
+.title_order{
+    font-weight: 500;
+    margin-right: 5px;
+}
+.staff_name{
+    font-size: 18px;
+    margin-left: 5px;
+}
+#order_item_show{
+    display: none;
+}
+#order_item_show.show{
+    display: block;
+}
+.order_sale{
+    margin-top: 20px;
+}
+.search_order{
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+}
+::placeholder{
+    font-style: italic;
+}
+#order_id{
+    width: 350px;
+}
+#order_status{
+    width: 220px;
+}
+.error_search{
+    text-align: center;
+    font-size: 25px;
+    height: 240px;
+    line-height: 240px;
+}
+.btn_detaile_order{
+    margin-right: 5px;
+}

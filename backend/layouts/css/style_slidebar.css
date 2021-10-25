@@ -1,0 +1,137 @@
+html{
+    /* --color:rgb(194, 199, 208); */
+    --color:white;
+}
+.slidebar_container{
+    background-color: rgb(52, 58, 64);
+    box-shadow: 1px 1px 8px 4px rgba(0,0,0,0.3);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: 4;
+}
+.collapse{
+    animation: hide ease 0.3s;
+    width: 70px;
+    z-index: 3;
+}
+.extend{
+    animation: show ease 3s;
+    width: 100%;
+}
+@keyframes hide{
+    from{
+        width: 100%;
+    }to{
+        width: 70px;;
+    }
+}
+@keyframes show{
+    from{
+        width: 70px;
+    }to{
+        width: 100%;
+    }
+}
+.slidebar_container:hover{
+    width: 256px !important;
+}
+.slidebar_container:hover .text.hide{
+    display: inline;
+}
+.slidebar_header{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(75, 84, 92);
+    color: black;
+}
+.slider_menu--header{
+    color: var(--color);
+    display: block;
+    font-size: 16px;
+    padding: 15px 0 15px 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(75, 84, 92);
+}
+#menu_container.hide_menu{
+    display: none;
+}
+#menu_container{
+    display: block;
+}
+.slider_menu--header:hover{
+    cursor: pointer;
+}
+.icon_down{
+    position: relative;
+    top:1px;left: 10px;
+}
+.logo{
+    margin: 0 10px 0 15px;
+}
+a:hover{
+    text-decoration: none;
+}
+.title{
+    font-size: 17px;
+    text-transform: uppercase;
+    color: var(--color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.slidebar_content{
+    padding: 0 15px;
+    flex: 1;
+}
+.slidebar_user{
+    min-height: 60px;
+    color: var(--color);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgb(75, 84, 92);
+}
+.slidebar_user .fa-user-circle{
+    font-size: 25px;
+    padding-right: 10px;
+}
+.slidebar_menu--item a{
+    text-decoration: none;
+    color: var(--color);
+    padding: 10px 0 10px 16px;
+    display: block;
+    font-size: 15px;
+    border: 1px solid transparent;
+}
+.nav-icon{
+    font-size: 20px;
+    padding-right: 10px;
+}
+.slidebar_menu--item a:hover{
+    opacity: 0.8;
+    border: 1px lightslategray solid;
+    border-radius: 5px;
+    color: var(--color);
+    text-decoration: none;
+}
+.slider_logout{
+    border-top: 1px solid rgb(75, 84, 92);
+    color: var(--color);
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    height: 60px;
+}
+.slider_logout:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.text.hide{
+    display: none;
+}

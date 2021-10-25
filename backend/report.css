@@ -1,0 +1,38 @@
+.report{
+    font-size: 25px;
+}
+.report_content{
+    margin-top: 20px;
+}
+#doanh_thu{
+    width: 650px;
+}
+.cart_sum_product{
+    width: 200px;
+    text-align: center;
+    margin-right: 20px;
+}
+.cart_sum_order{
+    margin-left: 15px;
+}
+.card-header{
+    color: white;
+    font-size: 16px;
+    height: 40px;
+    line-height: 20px;
+}
+.card-header:hover{
+    cursor: pointer;
+    opacity: 0.9;
+}
+.cart_sum_revenue{
+    text-align: center;
+}
+.sum_product , .sum_revenue ,.sum_order{
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+}
+#san_pham,#doanh_thu{
+    margin-top: 40px;
+}

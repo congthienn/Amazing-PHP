@@ -1,0 +1,38 @@
+::placeholder{
+    font-style: italic;
+}
+.customer_list{
+    margin-top: 30px;
+}
+.customer_list--header{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 5px;
+}
+.company{
+    font-style: italic;
+    font-size: 14px;
+}
+.customer_email{
+    font-style: italic;
+}
+.customer_number{
+    font-weight: 600;
+}
+.action{
+    float: right;
+}
+.search_customer{
+    display: flex;
+    justify-content: end;
+    margin: 5px 0;
+}
+#search_customer{
+    width: 350px;
+}
+.error_search{
+    text-align: center;
+    font-size: 25px;
+    height: 240px;
+    line-height: 240px;
+}
