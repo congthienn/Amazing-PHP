@@ -4,7 +4,8 @@
         <li><label class="header_item--child" id="hide_slidebar" for="check_hide_slidebar"><i style="font-size: 20px;" class="fas fa-bars"></i></label></li>
         <input type="checkbox" id="check_hide_slidebar" hidden>
         <li class="header_item--child"><a href="/../Amazing-PHP/backend/">Trang chủ</a></li>
-        <li class="header_item--child"><a href="">Sản phẩm</a></li>
+        <li class="header_item--child"><a href="/../Amazing-PHP/backend/products/">Sản phẩm</a></li>
+        <li class="header_item--child"><a href="/../Amazing-PHP/backend/order/">Đơn hàng</a></li>
     </ul>
     <ul class="header_item">
         <li class="header_item--child"><i class="fas fa-search"></i></li>
