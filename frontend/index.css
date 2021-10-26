@@ -1,0 +1,12 @@
+.banner{
+    width: 370px;
+    display: block;
+    overflow: hidden;
+}
+.banner:hover img{
+    opacity: 0.8;
+    transform: scale3d(1.05, 1.05, 1);
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
