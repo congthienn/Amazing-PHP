@@ -6,6 +6,7 @@
         <li class="header_item--child"><a href="/../Amazing-PHP/backend/">Trang chủ</a></li>
         <li class="header_item--child"><a href="/../Amazing-PHP/backend/products/">Sản phẩm</a></li>
         <li class="header_item--child"><a href="/../Amazing-PHP/backend/order/">Đơn hàng</a></li>
+        <li class="header_item--child"><a href="/../Amazing-PHP/frontend/">Giao diện FrontEnd</a></li>
     </ul>
     <ul class="header_item">
         <li class="header_item--child"><i class="fas fa-search"></i></li>
