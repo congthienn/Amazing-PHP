@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Adidas Chính hãng, Converse Chính hãng</title>
-    <link rel="icon" href="/../Amazing-PHP/assets/uploads/tải xuống.png" type="image/x-icon" />
+    
     <?php include_once __DIR__ . '/../../Amazing-PHP/assets/vendor/library.php'?>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/../Amazing-PHP/frontend/index.css">
 </head>
 <body>
     <div id="header">
@@ -49,11 +49,13 @@
                 <?php foreach($data_category as $val_category):?>
                     <div class="category_item">
                         <div style="display: flex;align-items: center;justify-content: space-between;">
-                            <div class="category_name">
-                                <?=$val_category['tlh']?>
-                            </div>
+                            <a href="/../Amazing-PHP/frontend/producer/?producer=<?=$val_category['tlh']?>">
+                                <div class="category_name">
+                                    <?=$val_category['tlh']?>
+                                </div>
+                            </a>
                             <div class="view_all">
-                                Xem tất cả <i class="fas fa-angle-double-right"></i>
+                                <a href="/../Amazing-PHP/frontend/producer/?producer=<?=$val_category['tlh']?>">Xem tất cả <i class="fas fa-angle-double-right"></i></a>
                             </div>
                         </div>
                         
@@ -79,6 +81,7 @@
                             <div class="row no-gutters">
                                 <?php foreach($data_product as $val_product):?>
                                     <div class="col l-3">
+                                        <a href="/../Amazing-PHP/frontend/product/?product=<?=$val_product['mhh']?>" class="link_product">
                                         <div class="product_information">
                                             <div class="like_product"><i class="far fa-heart"></i></div>
                                             <div class="product_img">
@@ -92,14 +95,22 @@
                                                 <i class="far fa-star icon_star"></i>
                                                 <?php endfor;?>
                                             </div>
-                                            <div class="product_price">
-                                                <?=number_format($val_product['gia'],0,',','.')?>đ
+                                            <div style="display: flex;justify-content: space-between;">
+                                                <div>
+                                                    <div class="product_price">
+                                                        <?=number_format($val_product['gia'],0,',','.')?>đ
+                                                    </div>
+                                                    <div class="product_id">
+                                                        SKU: <?=$val_product['mhh']?>
+                                                    </div>
+                                                </div>
+                                                <div class="buy_product">
+                                                    <button class="btn_buy_product">Mua ngay</button>
+                                                </div>
                                             </div>
-                                            <div class="product_id">
-                                                SKU: <?=$val_product['mhh']?>
-                                            </div>
+                                           
                                         </div>
-                                        
+                                         </a>
                                     </div>
                                 <?php endforeach;?>
                             </div>
@@ -126,7 +137,6 @@
             fade: true,
             cssEase: 'linear'
         });
-    });
-    
+    });  
 </script>
 </html>

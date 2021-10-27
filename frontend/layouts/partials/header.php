@@ -45,7 +45,7 @@
     <div class="grid wide">
         <div class="list_content">
             <ul>
-                <li><a href="" class="list_item">Home</a></li>
+                <li><a href="/../Amazing-PHP/frontend/" class="list_item">Home</a></li>
                 <?php
                     include_once __DIR__ . '/../../../backend/connect_db.php';
                     $sql_select_category = <<<EOT
@@ -61,7 +61,7 @@
                     }
                 ?>
                 <?php foreach($data_category as $val_category):?>
-                    <li><a class="list_item" href=""><?=$val_category['tlh']?></a></li>
+                    <li><a class="list_item" href="/../Amazing-PHP/frontend/producer/?producer=<?=$val_category['tlh']?>"><?=$val_category['tlh']?></a></li>
                 <?php endforeach;?>
                 <li><a href="" class="list_item">Khuyến mãi</a></li>
                 <li><a href="" class="list_item">Liên hệ</a></li>

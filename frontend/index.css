@@ -52,6 +52,10 @@
     font-weight: 700;
     cursor: pointer;
 }
+.view_all a{
+    color: black;
+    text-decoration: none;
+}
 .product_img{
     width: 100%;
     overflow: hidden;
@@ -69,9 +73,29 @@
     transform: scale3d(1.05, 1.05, 1);
     transition:  transform linear .2s;
 }
+.product_information:hover .btn_buy_product{
+    display: block;
+}
 .like_product{
     position: absolute;
     top: 10px;
     right: 16px;
     z-index: 4;
+}
+.buy_product{
+    margin-top: 14px;
+}
+.btn_buy_product{
+    border: none;
+    padding: 5px 15px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 14px;
+    display: none;
+}
+a.link_product{
+    color: black;
+    text-decoration: none;
 }
