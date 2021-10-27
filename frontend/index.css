@@ -1,5 +1,5 @@
 .banner{
-    width: 370px;
+    width: 100%;
     display: block;
     overflow: hidden;
 }
@@ -9,6 +9,7 @@
     width: 100%;
     height: auto;
     overflow: hidden;
+    transition: transform ease .3s;
 }
 .category_name{
     background-color: black;
@@ -62,10 +63,11 @@
     position: relative;
 }
 .product_information:hover{
-    border: 1px solid black;
+    border: 1px solid rgb(73, 55, 55);
 }
 .product_information:hover img{
-    transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.05, 1.05, 1);
+    transition:  transform linear .2s;
 }
 .like_product{
     position: absolute;
