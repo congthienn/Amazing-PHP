@@ -1,4 +1,18 @@
 <link rel="stylesheet" href="/../Amazing-PHP/backend/layouts/css/style_header.css">
+<?php
+    // if(session_id() === ""){
+    //     session_start();
+    // }
+    if(isset($_COOKIE['User']) && !empty($_COOKIE['User'])){
+        $_SESSION['user'] = $_COOKIE['User'];
+    }
+    if(isset($_COOKIE['Email']) && !empty($_COOKIE['Email'])){
+        $_SESSION['email'] = $_COOKIE['Email'];
+    }
+    if(isset($_COOKIE['Staff']) && !empty($_COOKIE['Staff'])){
+        $_SESSION['staff'] = $_COOKIE['Staff'];
+    }
+?>
 <div class="header_container">
     <ul class="header_item">
         <li><label class="header_item--child" id="hide_slidebar" for="check_hide_slidebar"><i style="font-size: 20px;" class="fas fa-bars"></i></label></li>

@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Adidas Chính hãng, Converse Chính hãng</title>
-    
-    <?php include_once __DIR__ . '/../../Amazing-PHP/assets/vendor/library.php'?>
     <link rel="stylesheet" href="/../Amazing-PHP/frontend/index.css">
 </head>
 <body>

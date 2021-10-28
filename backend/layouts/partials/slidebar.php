@@ -52,8 +52,8 @@
             </div>
         </div>
     </div>
-    <div class="slider_logout">
+    <!-- <div class="slider_logout">
         <i class="fas fa-sign-out-alt nav-icon"></i><span class="text">Đăng xuất</span>
-    </div>
+    </div> -->
 </div>
 <script src="/../Amazing-PHP/backend/layouts/js/slidebar.js"></script>
