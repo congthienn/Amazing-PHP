@@ -14,7 +14,6 @@
     if(isset($_COOKIE['Staff']) && !empty($_COOKIE['Staff'])){
         $_SESSION['staff'] = $_COOKIE['Staff'];
     }
-    echo $_COOKIE['Staff'];
 ?>
 <div class="header">
     <div class="grid wide">
@@ -40,7 +39,7 @@
                                     <li class="container_user_logined--item btn_logout"><span><i class="fas fa-sign-out-alt"></i> Đăng xuất</span></li>
                                 </ul>
                             </div>
-                    </li>
+                        </li>
                     <?php else:?>
                         <li class="child-item last_child btn_login_user"><i class="fas fa-sign-in-alt"></i> Đăng nhập</li>
                     <?php endif;?>
@@ -178,25 +177,3 @@
 <script src="/../Amazing-PHP/assets/vendor/jquery.min.js"></script>
 <script src="/../Amazing-PHP/assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="/../Amazing-PHP/frontend/layouts/partials/header.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".btn_logout").click(function(){
-            Swal.fire({
-                title: 'Bạn muốn đăng xuất?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Đăng xuất'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                    )
-                }
-                })
-        });
-    });
-</script>

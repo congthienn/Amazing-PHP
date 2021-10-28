@@ -56,14 +56,10 @@ $(document).ready(function(){
                     }else{
                         Swal.fire({
                             title:"Đăng nhập thành công",
-                            text:"Xin chào "+response,
                             icon:"success"
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                $(".login").removeClass("show_login");
-                                $("#email").val("");
-                                $("#password").val("");
-                                $("#error_login").children().remove();
+                                location.reload();
                             }
                         });;
                     }
@@ -79,6 +75,7 @@ $(document).ready(function(){
         $(".login").removeClass("show_login");
         $("#email").val("");
         $("#password").val("");
+        $("#remember_login").prop("checked",false);
         $("#error_login").children().remove();
         $(".forget_password").addClass("show_forget_password");
     });
@@ -120,5 +117,26 @@ $(document).ready(function(){
                 }
             });
         }
+    });
+    //Dang xuat
+    $(".btn_logout").click(function(){
+        Swal.fire({
+            title: 'Bạn muốn đăng xuất?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#333333',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Đăng xuất'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "GET",
+                    url: "/../../../../Amazing-PHP/frontend/layouts/partials/logout.php",
+                    success: function(response){
+                       location.reload();
+                    }
+                });
+            }
+        });
     });
 });

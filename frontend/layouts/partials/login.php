@@ -39,9 +39,20 @@
         if(strcmp($remember_login,'true')==0){
             setcookie("User",$_SESSION['user'],time()+(30*24*3600),'/');
             setcookie("Email",$_SESSION['email'],time()+(30*24*3600),'/');
-            setcookie("Staff",$_SESSION['staff'],time()+(30*24*3600));
+            setcookie("Staff",$_SESSION['staff'],time()+(30*24*3600),'/');
         }
-        die(json_encode($result_staff['HoTenNV']));
+        $result_json ='
+                <span><i class="fas fa-user-circle"></i> '.$_SESSION['user'].'</span>
+                <div class="container_user_logined">
+                    <ul>';
+                        if(isset($_SESSION['staff']) && ($_SESSION['staff'])==1):
+                        $result_json .= '<a href="/../Amazing-PHP/backend/"><li class="container_user_logined--item"><img src="/../Amazing-PHP/assets/uploads/AdminLTELogo.png" width="28px">Amazing Admin</li></a>';
+                        endif;
+                $result_json .='<li class="container_user_logined--item"><span><i class="fas fa-user-shield"></i> Tài khoản</span></li>
+                        <li class="container_user_logined--item btn_logout"><span><i class="fas fa-sign-out-alt"></i> Đăng xuất</span></li>
+                    </ul>
+                </div>';
+        echo json_encode($result_json);
     }else if($result_user > 0){
         //Kiem tra khach hang
         if(!isset($_SESSION['user'])){
@@ -56,8 +67,19 @@
         if(strcmp($remember_login,'true')==0){
             setcookie("User",$_SESSION['user'],time()+(30*24*3600),'/');
             setcookie("Email",$_SESSION['email'],time()+(30*24*3600),'/');
-            setcookie("Staff",$_SESSION['staff'],time()+(30*24*3600));
+            setcookie("Staff",$_SESSION['staff'],time()+(30*24*3600),'/');
         }
-        die(json_encode($result['HoTenKH']));
+        $result_json ='
+                <span><i class="fas fa-user-circle"></i> '.$_SESSION['user'].'</span>
+                <div class="container_user_logined">
+                    <ul>';
+                        if(isset($_SESSION['staff']) && ($_SESSION['staff'])==1):
+                         $result_json .= '<a href="/../Amazing-PHP/backend/"><li class="container_user_logined--item"><img src="/../Amazing-PHP/assets/uploads/AdminLTELogo.png" width="28px">Amazing Admin</li></a>';
+                        endif;
+                 $result_json .='<li class="container_user_logined--item"><span><i class="fas fa-user-shield"></i> Tài khoản</span></li>
+                        <li class="container_user_logined--item btn_logout"><span><i class="fas fa-sign-out-alt"></i> Đăng xuất</span></li>
+                    </ul>
+                </div>';
+        echo json_encode($result_json);
     }
 ?>
