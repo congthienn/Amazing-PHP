@@ -138,7 +138,7 @@
             </div>
             <button class="btn_login btn_login--user">Đăng nhập</button>
             <div class="sublite_form_login">
-                <span>Bạn chưa có tài khoản?</span>
+                <span class="text_register_user">Bạn chưa có tài khoản?</span>
                 <span class="text_forget_password">Quên mật khẩu ?</span>
             </div>
         </div>
@@ -164,7 +164,7 @@
                 </div>
                 <div id="error_forget"></div>
                 <div class="sublite_form_login">
-                    <span>Hãy cung cấp địa chỉ email của tài khoản và một email đặt lại mật khẩu sẽ được gửi tới hộp thư đến của bạn</span>
+                    <span>Hãy cung cấp địa chỉ email của tài khoản và một email đặt lại mật khẩu sẽ được gửi đến địa chỉ email đó</span>
                 </div>
                 <button class="btn_login btn_forget_passwd">Yêu cầu đặt lại</button>
                 <div class="sublite_form_login">
@@ -174,6 +174,53 @@
         </div>       
     </div>
 </div>
+<div class="register_user">
+        <div class="register_container"></div>
+        <div class="login_content register_content">
+            <div class="login_content--header">
+                <a class="logo">
+                    <img src="/../Amazing-PHP/assets/uploads/AdminLTELogo.png" width="80px">
+                </a>
+                <div class="text_title">
+                    Đăng kí tài khoản
+                </div>
+            </div>
+            <div class="login_content--form">
+                <form action="/../Amazing-PHP/frontend/layouts/partials/register_user.php" name="formregisteruser" id="formregisteruser" method="POST">
+                    <div class="form--item">
+                        <label for="customer_name" class="label_login"><i class="fas fa-user"></i> Họ và tên</label>
+                        <div class="container--input">
+                            <input type="text" id="customer_name" name="customer_name" class="from--input">
+                        </div>
+                    </div>
+                    <div class="form--item">
+                        <label for="customer_phone" class="label_login"><i class="fas fa-phone-alt"></i> Số điện thoại</label>
+                        <div class="container--input">
+                            <input type="tel" id="customer_phone" name="customer_phone" class="from--input">
+                        </div>
+                    </div>
+                    <div class="form--item">
+                        <label for="customer_email" class="label_login"><i class="fas fa-envelope"></i> Email</label>
+                        <div class="container--input">
+                            <input type="email" id="customer_email" name="customer_email" class="from--input">
+                        </div>
+                    </div>
+                    <div class="sublite_form_login">
+                        <span>Mật khẩu đăng nhập sẽ được gửi đến email mà bạn đăng kí tài khoản trên Amazing</span>
+                    </div>
+                    <button class="btn_login btn_register" name=" btn_register">Đăng kí</button>
+                    <div class="sublite_form_login">
+                        <span class="text_login_user">Đã có tài khoản? Đăng nhập</span>
+                    </div>
+                </form>
+            </div>
+        </div>       
+    </div>
+</div>
+<div>
+    <button class="btn_back_top"><i class="fas fa-angle-up"></i></button>
+</div>
 <script src="/../Amazing-PHP/assets/vendor/jquery.min.js"></script>
-<script src="/../Amazing-PHP/assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="/../Amazing-PHP/frontend/layouts/partials/header.js"></script>
+<script src="/../Amazing-PHP/assets/vendor/jquery.validate.min.js"></script>
+<script src="/../Amazing-PHP/assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>

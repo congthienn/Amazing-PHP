@@ -22,6 +22,13 @@ $(document).ready(function(){
         $("#password").val("");
         $("#error_login").children().remove();
     });
+    //Hide
+    $(".forget_container").click(function(){
+        $(".forget_password").removeClass("show_forget_password");
+    });
+    $(".register_container").click(function(){
+        $(".register_user").removeClass("show_register_user");
+    });
     //Show password
     $(".show_password").click(function(){
         var check = $("#show_password").prop("checked");
@@ -84,6 +91,17 @@ $(document).ready(function(){
         $("#email_forget").val("");
         $(".forget_password").removeClass("show_forget_password");
         $(".login").addClass("show_login");
+        $(".register_user").removeClass("show_register_user");
+        $("#customer_email,#customer_name,#customer_phone").val("");
+        $(".invalid-feedback").remove();
+    });
+    //Show register 
+    $(".text_register_user").click(function(){
+        $(".login").removeClass("show_login");
+        $("#email").val("");
+        $("#password").val("");
+        $("#remember_login").prop("checked",false);
+        $(".register_user").addClass("show_register_user");
     });
     //Submit forget password
     $("#email_forget").click(function(){
@@ -137,6 +155,82 @@ $(document).ready(function(){
                     }
                 });
             }
+        });
+    });
+    var customer_id = ' ';
+    $("#formregisteruser").validate({
+        rules: {
+            customer_name:{
+                required:true
+            },
+            customer_email:{
+                required:true,
+                email:true,
+                remote:{
+                    url:"/../../../../Amazing-PHP/backend/customer/add/validate_check_email.php",
+                    type:"GET",
+                    data:{
+                        customer_id
+                    }
+                }
+            },
+            customer_phone:{
+                required:true,
+                number:true,
+                rangelength:[10,10],
+                remote:{
+                    url:"/../../../../Amazing-PHP/backend/customer/add/validate_check_phone.php",
+                    type:"GET",
+                    data:{
+                        customer_id
+                    }
+                }
+            }
+        },
+        messages:{
+            customer_name:{
+                required:"Họ và tên không được để trống"
+            },
+            customer_email:{
+                required:"Địa chỉ email không được để trống",
+                email:"Địa chỉ email không hợp lệ",
+                remote:"Địa chỉ email bạn vừa nhập đã được đăng kí tài khoản, vui lòng kiểm tra lại"
+            },
+            customer_phone:{
+                required:"Số điện thoại không được để trống",
+                number:"Số điện thoại không hợp lệ",
+                remote:"Số điện thoại bạn vừa nhập đã được đăng kí tài khỏa, vui lòng kiểm tra lại",
+                rangelength:"Số điện thoại không hợp lệ"
+            }
+        },
+        errorElement: "em",
+        errorPlacement: function (error, element) {
+            error.addClass("invalid-feedback");
+            if (element.prop("type") === "checkbox") {
+                error.insertAfter(element.parent("label"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        success: function (label, element) { },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass("is-invalid");
+        }
+    });
+    $(window).scroll(function(){
+        var e = $(window).scrollTop();
+        if(e > 200){
+            $(".btn_back_top").show();
+        }else{
+            $(".btn_back_top").hide();
+        }
+    });
+    $(".btn_back_top").click(function(){
+        $("html,body").animate({
+            scrollTop:0
         });
     });
 });

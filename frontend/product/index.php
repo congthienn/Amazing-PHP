@@ -224,7 +224,6 @@
         <?php include_once __DIR__ . '/../../../Amazing-PHP/frontend/layouts/partials/footer.php';?>
     </div>
 </body>
-<script src="/../Amazing-PHP/assets/vendor/jquery.min.js"></script>
 <script src="/../Amazing-PHP/assets/vendor/slick/slick.min.js"></script>
 <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/slick/slick-theme.css">
 <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/slick/slick.css">
