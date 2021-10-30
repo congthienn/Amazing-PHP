@@ -50,7 +50,7 @@
             foreach(array_reverse($data_cart) as $val=>$product_item){
             $sum_money += $product_item['product_quantity']*$product_item['product_price'];
             $result_cart_header .= '
-                <div class="product_cart--item">
+                <div class="product_cart--item '.$product_item['product_id'].'">
                     <img src="/../Amazing-PHP/assets/uploads/products/'.$product_item['product_name'].'/'.$product_item['product_img'].'" width="90px">
                     <div class="product_cart--item__infor">
                         <div class="cart_product--name">'.$product_item['product_name'].'</div>
@@ -79,7 +79,7 @@
                 <a href="" class="button_cart--item pay_now">Tiến hành thanh toán</a>
             </div>
             <div>
-                <a href="" class="button_cart--item go_cart">Đi đến giỏ hàng</a>
+                <a href="/../Amazing-PHP/frontend/cart/" class="button_cart--item go_cart">Đi đến giỏ hàng</a>
             </div>   
         </div>
     </div>
@@ -88,5 +88,61 @@
     $quantity_cart = $_SESSION['quantity_cart'];
     $data_result['quantity_cart'] = $quantity_cart;
     $data_result['cart_header'] = $result_cart_header;
+    $result_buy_now ='
+        <div class="buy_now">
+            <div class="container_buy_now">
+                <div class="content_buy_now">
+                            <div class="buy_now-header">
+                                Giỏ hàng của bạn
+                            </div>
+                            <div class="list_product_cart">';
+                                $data_cart = $_SESSION['cart'];
+                                $sum_money = 0;
+                                foreach(array_reverse($data_cart) as $val=>$product_item):
+                                    $result_buy_now .='
+                                    <div class="list_product_cart--item '.$product_item['product_id'].'">
+                                        <img src="/../Amazing-PHP/assets/uploads/products/'.$product_item['product_name'].'/'.$product_item['product_img'].'" width="90px">
+                                        <div class="product_cart--infor">
+                                            <div class="product_cart--name">'.$product_item['product_name'].'</div>
+                                            <div class="product_cart--price">'.number_format($product_item['product_price'],0,',','.').'đ</div>
+                                        </div>
+                                        <div>
+                                            <div class="cart_product--quantity">
+                                                <input type="button" value="-" id="" class="btn_cart_quantity btn_cart_product--reduce" data-act="0" data-product_id="'.$product_item['product_id'].'">
+                                                <input type="text" value="'.$product_item['product_quantity'].'" class="value_cart_product--quantity" readonly>
+                                                <input type="button" value="+" id="" class="btn_cart_quantity btn_cart_product--increase" data-act="1" data-product_id="'.$product_item['product_id'].'">
+                                            </div>
+                                        </div>
+                                        <div class="money">
+                                         <span id="money_abc"><strong>Thành tiền :</strong> '.number_format(($product_item['product_price'] * $product_item['product_quantity']),0,',','.').'đ</span>
+                                            <div class="cart_product--delete" data-product_id="'.$product_item['product_id'].'">
+                                                <i class="fas fa-times"></i>
+                                            </div>
+                                        </div>
+                                    </div>';
+                                    $sum_money += $product_item['product_price'] * $product_item['product_quantity'];
+                                endforeach;
+                            $result_buy_now .='
+                                <div class="buy_now_sum-money">
+                                    <strong>Tổng tiền : </strong> <span id="sum_money">'.number_format($sum_money,0,',','.').'đ</span>
+                                </div>
+                                <div class="buy_now--button">
+                                    <div class="continue_buy buy_now--button__item">Tiếp tục mua hàng</div>
+                                    <a href="" class="buy_now--pay buy_now--button__item">Tiến hành thanh toán</a>
+                                </div>
+                            </div>
+                    </div> 
+            </div>
+        </div>
+        <script>
+            $(".container_buy_now , .continue_buy").click(function(){
+                $(".buy_now").hide();
+            });
+            $(".content_buy_now").click(function(e){
+                e.stopPropagation();
+            });
+        </script>
+    ';
+    $data_result['buy_now'] = $result_buy_now;
     echo json_encode($data_result);
 ?>

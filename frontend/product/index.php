@@ -224,40 +224,15 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div id="result_buy_now"></div>
     <div id="footer">
         <?php include_once __DIR__ . '/../../../Amazing-PHP/frontend/layouts/partials/footer.php';?>
-    </div>
-    <div class="buy_now">
-        <div class="container_buy_now"></div>
-        <div class="content_buy_now"></div>
     </div>
 </body>
 <script src="/../Amazing-PHP/assets/vendor/slick/slick.min.js"></script>
 <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/slick/slick-theme.css">
 <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/slick/slick.css">
 <script src="product.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".btn_buy_now").click(function(){
-            var quantity = $("#value_quantity").val();
-            var product_id = $(this).data("product_id");
-           $.ajax({
-               type: "GET",
-               url: "add_cart.php",
-               data:{
-                   quantity,product_id
-               },
-               dataType: "json",
-               success: function(response) {
-                    var result_quantity_cart ='<div class="quantity_cart">'+response.quantity_cart+'</div>';
-                    $("#result_quantity_cart").html(result_quantity_cart);
-                    $("#result_cart_header").html(response.cart_header);
-               }
-           });
-        });
-    });
-</script>
 <?php else:?>
     <script>
         location.replace("/../Amazing-PHP/frontend/");

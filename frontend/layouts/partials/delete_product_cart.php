@@ -12,6 +12,7 @@
     if(empty($_SESSION['cart'])){
         $result_cart_header = 0;
         unset($_SESSION['cart']);
+        $result_buy_now = '';
         unset($_SESSION['quantity_cart']);
         setcookie("Cart",json_encode($data_cart),time()-60,'/');
     }else{
@@ -22,9 +23,11 @@
             $sum_money += $product_item['product_price'] * $product_item['product_quantity'];
         }
         $result_cart_header = number_format($sum_money,0,',','.').'đ';
+        $result_buy_now = 1;
     }
     $data_result = [];
     $data_result['quantity_cart'] = $quantity_cart;
     $data_result['sum_money'] = $result_cart_header;
+    $data_result['buy_now'] = $result_buy_now;
     echo json_encode($data_result);
 ?>

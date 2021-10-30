@@ -59,3 +59,28 @@ $(document).ready(function(){
         ]
     });
 });
+$(".btn_buy_now").click(function(){
+    $(".buy_now").show()
+    var quantity = $("#value_quantity").val();
+    var product_id = $(this).data("product_id");
+   $.ajax({
+       type: "GET",
+       url: "add_cart.php",
+       data:{
+           quantity,product_id
+       },
+       dataType: "json",
+       success: function(response) {
+            var result_quantity_cart ='<div class="quantity_cart">'+response.quantity_cart+'</div>';
+            $("#result_quantity_cart").html(result_quantity_cart);
+            $("#result_cart_header").html(response.cart_header);
+            $("#result_buy_now").html(response.buy_now)
+       }
+   });
+});
+$(".container_buy_now").click(function(){
+    $(".buy_now").hide();
+});
+$(".content_buy_now").click(function(e){
+    e.stopPropagation();
+});

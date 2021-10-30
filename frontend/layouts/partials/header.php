@@ -125,7 +125,7 @@
                                         <a href="" class="button_cart--item pay_now">Tiến hành thanh toán</a>
                                     </div>
                                     <div>
-                                        <a href="" class="button_cart--item go_cart">Đi đến giỏ hàng</a>
+                                        <a href="/../Amazing-PHP/frontend/cart/" class="button_cart--item go_cart">Đi đến giỏ hàng</a>
                                     </div>
                                     
                                 </div>

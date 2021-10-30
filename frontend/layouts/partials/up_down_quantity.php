@@ -25,6 +25,7 @@
     }
     $data_result = [];
     $data_result['product_quantity'] = $data_cart[$product_id]['product_quantity'];
+    $data_result['item_sum'] = number_format(($data_cart[$product_id]['product_quantity']*$data_cart[$product_id]['product_price']),0,',','.').'đ';
     $data_result['sum_money'] = number_format($sum_money,0,',','.').'đ';
     $data_result['quantity_cart_header'] =  $_SESSION['quantity_cart'];
     echo json_encode($data_result);

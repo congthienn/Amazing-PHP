@@ -11,9 +11,11 @@ $(document).ready(function(){
         },
         dataType: "json",
         success: function (response) {
-            $('#result_sum_money_cart').html(response.sum_money);
+            $('#result_sum_money_cart ,#sum_money').html(response.sum_money);
             that.parent().find(".value_cart_product--quantity").prop("value",response.product_quantity);
+            $("."+product_id).find(".value_cart_product--quantity").prop("value",response.product_quantity);
             $("#result_quantity_cart").html('<div class="quantity_cart">'+response.quantity_cart_header+'</div>');
+            that.parent().parent().parent().find("#money_abc").html('<strong>Thành tiền : </strong>'+response.item_sum);
         }
     });
     });
