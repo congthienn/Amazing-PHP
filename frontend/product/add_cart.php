@@ -10,11 +10,9 @@
     EOT;
     $query_product = mysqli_query($conn,$sql_select_product);
     $result_product = mysqli_fetch_array($query_product,MYSQLI_ASSOC);
-    if($result_product['SoLuongHang'] < $quantity){
-        echo json_encode($result_product['SoLuongHang']);
-    }else{
         if(!isset($_SESSION['cart'])){
             $data_cart[$product_id] = array(
+                'product_id' => $product_id,
                 'product_name' => $result_product['TenHH'],
                 'product_price' => $result_product['Gia'],
                 'product_quantity' => $quantity,
@@ -30,6 +28,7 @@
                 $_SESSION['quantity_cart'] += $quantity;
             }else{
                 $data_cart[$product_id] = array(
+                    'product_id' => $product_id,
                     'product_name' => $result_product['TenHH'],
                     'product_price' => $result_product['Gia'],
                     'product_quantity' => $quantity,
@@ -39,7 +38,6 @@
                 $_SESSION['quantity_cart'] += $quantity; 
             }
         }
-    }
     setcookie("Cart",json_encode($data_cart),time()+(30*24*3600),'/');
     $data_result = [];
     $sum_money = 0;
@@ -49,7 +47,7 @@
             Giỏ hàng của bạn
         </div>
         <div class="content_cart">';
-            foreach($data_cart as $val=>$product_item){
+            foreach(array_reverse($data_cart) as $val=>$product_item){
             $sum_money += $product_item['product_quantity']*$product_item['product_price'];
             $result_cart_header .= '
                 <div class="product_cart--item">
@@ -58,11 +56,11 @@
                         <div class="cart_product--name">'.$product_item['product_name'].'</div>
                         <div class="cart_product--price">'.number_format($product_item['product_price'],0,',','.').'đ</div>
                         <div class="cart_product--quantity">
-                            <input type="button" value="-" id="" class="btn_cart_quantity btn_cart_product--reduce">
+                            <input type="button" value="-" id="" class="btn_cart_quantity btn_cart_product--reduce" data-act="0" data-product_id="'.$product_item['product_id'].'">
                             <input type="text" value="'.$product_item['product_quantity'].'" class="value_cart_product--quantity" readonly>
-                            <input type="button" value="+" id="" class="btn_cart_quantity btn_cart_product--increase">
+                            <input type="button" value="+" id="" class="btn_cart_quantity btn_cart_product--increase" data-act="1" data-product_id="'.$product_item['product_id'].'">
                         </div>
-                        <div class="cart_product--delete">
+                        <div class="cart_product--delete" data-product_id="'.$product_item['product_id'].'">
                             <i class="fas fa-times"></i>
                         </div>
                     </div>
@@ -74,7 +72,7 @@
             <div>
                 <strong>Tổng tiền </strong>
             </div>
-            <div>'.number_format($sum_money,0,',','.').'đ</div>
+            <div style="font-size: 20px;" id="result_sum_money_cart">'.number_format($sum_money,0,',','.').'đ</div>
         </div>
         <div class="button_cart">
             <div>
@@ -84,7 +82,9 @@
                 <a href="" class="button_cart--item go_cart">Đi đến giỏ hàng</a>
             </div>   
         </div>
-    </div>';
+    </div>
+    <script src="/../Amazing-PHP/frontend/layouts/partials/up_down_quantity.js"></script>
+    <script src="/../Amazing-PHP/frontend/layouts/partials/delete_product_cart.js"></script>';
     $quantity_cart = $_SESSION['quantity_cart'];
     $data_result['quantity_cart'] = $quantity_cart;
     $data_result['cart_header'] = $result_cart_header;

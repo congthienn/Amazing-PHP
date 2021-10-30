@@ -1,0 +1,31 @@
+.container_cart_empty{
+    display: flex;
+    width: 100%;
+    min-height: 300px;
+}
+.cart_empty{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btn_comeback_home{
+    background-color: black;
+    width: 180px;
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 4px 4px 1px 1px rgb(0, 0, 0,0.2);
+}
+.icon_cart_empty{
+    font-size: 100px;
+    position: relative;
+    left: -5px;
+}
+.cart_empty--text{
+    font-size: 20px;
+    margin: 10px 0;
+}
+/* .cart:hover .container_cart{
+    display: none !important;
+} */

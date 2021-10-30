@@ -166,15 +166,16 @@ ul{
     font-weight: 600;
     font-size: 17px;
     padding: 10px 0 15px;
+    border-bottom: 1px solid gray;
 }
 .cart::after{
     content: "";
-    width: 30px;
+    width: 70px;
     height: 30px;
     position: absolute;
     background-color: transparent;          
     bottom:-30px;
-    left: 0;
+    left: -30px;
 }
 .container_cart::after{
     content: "";
@@ -215,6 +216,7 @@ ul{
     position: absolute;
     top: 0;right: 0;
     color: gray;
+    cursor: pointer;
 }
 .button_cart{
     width: 100%;
@@ -237,6 +239,7 @@ ul{
     margin: 5px 0;
     display: flex;
     width: 100%;
+    align-items: center;
     justify-content: space-between;
     
 }
@@ -262,6 +265,9 @@ ul{
     border-left: none;
     border-right: none;
     font-weight: 700;
+}
+.value_cart_product--quantity:focus{
+    outline: none;
 }
 .cart:hover .container_cart{
     display: flex;

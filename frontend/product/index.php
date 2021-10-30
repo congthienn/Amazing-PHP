@@ -24,7 +24,6 @@
         <?php include_once __DIR__ . '/../../../Amazing-PHP/frontend/layouts/partials/header.php';?>
     </div>
     <?php 
-      
         // echo json_encode($_SESSION['cart']);
         // echo  $_SESSION['quantity_cart'];
     ?>
@@ -251,14 +250,9 @@
                },
                dataType: "json",
                success: function(response) {
-                    if(Number.isInteger(Number(response))){
-                        var html = '<span>Sản phẩm bạn chọn chỉ còn '+response+' sản phẩm <span>';
-                        $("#result_check_quantity").html(html);
-                    }else{
-                        var result_quantity_cart ='<div class="quantity_cart">'+response.quantity_cart+'</div>';
-                        $("#result_quantity_cart").html(result_quantity_cart);
-                        $("#result_cart_header").html(response.cart_header);
-                    }
+                    var result_quantity_cart ='<div class="quantity_cart">'+response.quantity_cart+'</div>';
+                    $("#result_quantity_cart").html(result_quantity_cart);
+                    $("#result_cart_header").html(response.cart_header);
                }
            });
         });
