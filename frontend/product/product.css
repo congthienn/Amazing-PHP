@@ -97,7 +97,12 @@
     border-radius: 4px;
 }
 .product_quantity{
-    margin: 15px 0;
+    margin: 15px 0 10px;
+}
+#result_check_quantity{
+    margin-bottom: 10px;
+    font-style: italic;
+    color: red;
 }
 .btn_quantity{
     padding: 5px;
@@ -236,6 +241,21 @@
     padding: 10px 15px;
     font-weight: 600;
     border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    
+    border-top-right-radius: 4px;   
 }
+/* .container_buy_now{
+    position: fixed;
+    top: 0;right: 0;
+    left: 0;bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 5;
+}
+.content_buy_now{
+    position: fixed;
+    background-color: white;
+    width: 900px;
+    height: 500px;
+    z-index: 6;
+    top: calc((100% - 500px)/2);
+    left: calc((100% - 900px)/2);
+} */

@@ -14,6 +14,12 @@
     if(isset($_COOKIE['Staff']) && !empty($_COOKIE['Staff'])){
         $_SESSION['staff'] = $_COOKIE['Staff'];
     }
+    if(isset($_COOKIE["Cart"]) && !empty($_COOKIE['Cart'])){
+        $_SESSION['cart'] = json_decode($_COOKIE['Cart'],true);
+    }
+    // unset($_SESSION['cart']);
+    // unset( $_SESSION['quantity_cart']);
+    // setcookie("Cart",0,time()-60,'/');
 ?>
 <div class="header">
     <div class="grid wide">
@@ -51,8 +57,11 @@
                 <img src="/../Amazing-PHP/assets/uploads/AdminLTELogo.png" width="55px"> <span class="logo_name">MAZING</span>
             </a>
             <div class="search">
-                <input type="text" id="search_product" placeholder="Bạn muốn tìm sản phẩm gì...">
-                <button id="btn_search"><span><i class="fas fa-search"></i></span></button>
+                <form action="/../Amazing-PHP/frontend/product/" method="GET">
+                    <input name="product" type="text" id="search_product" placeholder="Bạn muốn tìm sản phẩm gì...">
+                    <button id="btn_search"><span><i class="fas fa-search"></i></span></button>
+                    <div id="result_search"></div>
+                </form>
             </div>
             <div class="hotline">
                 <i class="fas fa-phone-square-alt icon-header"></i>
@@ -66,6 +75,65 @@
             </div>
             <div class="cart">
                 <i class="fas fa-shopping-cart icon-header"></i>
+                <div id="result_quantity_cart">
+                    <?php if(isset($_SESSION['quantity_cart'])):?>
+                        <div class="quantity_cart">
+                            <?=$_SESSION['quantity_cart'];?>
+                        </div>
+                    <?php endif;?>
+                </div>
+                <div id="result_cart_header">
+                    <div class="container_cart">
+                        <?php if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])):?>
+                            <?php $data_cart = $_SESSION['cart'];?>
+                            <?php $sum_money = 0;?>
+                            <div class="cart_header--title">
+                                Giỏ hàng của bạn
+                            </div>
+                            <div class="content_cart">
+                                <?php foreach($data_cart as $val=>$product_item):?>
+                                    <?php $sum_money += $product_item['product_price'] * $product_item['product_quantity'];?>
+                                        <div class="product_cart--item">
+                                            <img src="/../Amazing-PHP/assets/uploads/products/<?=$product_item['product_name']?>/<?=$product_item['product_img']?>" width="90px">
+                                            <div class="product_cart--item__infor">
+                                                <div class="cart_product--name">
+                                                    <?=$product_item['product_name']?>
+                                                </div>
+                                                <div class="cart_product--price">
+                                                    <?=number_format($product_item['product_price'],0,',','.')?>đ
+                                                </div>
+                                                <div class="cart_product--quantity">
+                                                    <input type="button" value="-" id="" class="btn_cart_quantity btn_cart_product--reduce">
+                                                    <input type="text" value="1" class="value_cart_product--quantity" readonly>
+                                                    <input type="button" value="+" id="" class="btn_cart_quantity btn_cart_product--increase">
+                                                </div>
+                                                <div class="cart_product--delete">
+                                                    <i class="fas fa-times"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <?php endforeach;?>
+                            </div>
+                            <div class="sum_money_cart">
+                                <div>
+                                    <strong>Tổng tiền </strong>
+                                </div>
+                                <div><?=number_format($sum_money,0,',','.')?>đ</div>
+                            </div>
+                            <div class="button_cart">
+                                <div>
+                                    <a href="" class="button_cart--item pay_now">Tiến hành thanh toán</a>
+                                </div>
+                                <div>
+                                    <a href="" class="button_cart--item go_cart">Đi đến giỏ hàng</a>
+                                </div>
+                                
+                            </div>
+                        <?php else:?>
+                            <span class="cart_empty">Không có sản phẩm nào trong giỏ hàng</span>
+                        <?php endif;?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

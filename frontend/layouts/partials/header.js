@@ -220,9 +220,10 @@ $(document).ready(function(){
             $(element).removeClass("is-invalid");
         }
     });
+    //Back top
     $(window).scroll(function(){
         var e = $(window).scrollTop();
-        if(e > 200){
+        if(e > 150){
             $(".btn_back_top").show();
         }else{
             $(".btn_back_top").hide();
@@ -232,5 +233,27 @@ $(document).ready(function(){
         $("html,body").animate({
             scrollTop:0
         });
+    });
+    //Search product
+    $("#search_product").keyup(function(){
+        var key = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: "/../Amazing-PHP/frontend/layouts/partials/search_product.php",
+            data:{
+                key
+            },
+            dataType: "json",
+            success: function (response) {
+                 $('#result_search').html(response);
+            }
+        });
+    });
+    $(window).click(function(e){
+        $("#result_search").hide();
+    });
+    $("#search_product").click(function (e) { 
+        e.stopPropagation();
+        $("#result_search").show();
     });
 });

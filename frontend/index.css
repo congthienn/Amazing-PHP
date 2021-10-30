@@ -84,6 +84,8 @@
 }
 .buy_product{
     margin-top: 14px;
+    position: relative;
+    z-index: 2;
 }
 .btn_buy_product{
     border: none;
@@ -98,4 +100,7 @@
 a.link_product{
     color: black;
     text-decoration: none;
+    display: block;
+    position: relative;
+    z-index: 1;
 }

@@ -69,9 +69,9 @@
                                                             SKU: <?=$val_product['mhh']?>
                                                         </div>
                                                     </div>
-                                                    <div class="buy_product">
+                                                    <!-- <div class="buy_product">
                                                         <button class="btn_buy_product">Mua ngay</button>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             
                                             </div>

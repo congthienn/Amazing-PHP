@@ -23,6 +23,11 @@
     <div id="header">
         <?php include_once __DIR__ . '/../../../Amazing-PHP/frontend/layouts/partials/header.php';?>
     </div>
+    <?php 
+      
+        // echo json_encode($_SESSION['cart']);
+        // echo  $_SESSION['quantity_cart'];
+    ?>
     <div id="main">
         <div class="container_navbar">
             <div class="grid wide">
@@ -109,8 +114,9 @@
                                 <input type="button" value="+" readonly class="btn_quantity btn_increase">
                             </div>
                         </div>
+                        <div id="result_check_quantity"></div>
                         <div class="buy_product">
-                            <div class="buy_now buy_product--item">
+                            <div class="btn_buy_now buy_product--item" data-product_id="<?=$product_id?>">
                                 <div class="buy_title">Mua ngay</div>
                                 <div class="buy_sublite">Giao hàng tận COD tận nơi</div>
                             </div>
@@ -223,11 +229,41 @@
     <div id="footer">
         <?php include_once __DIR__ . '/../../../Amazing-PHP/frontend/layouts/partials/footer.php';?>
     </div>
+    <div class="buy_now">
+        <div class="container_buy_now"></div>
+        <div class="content_buy_now"></div>
+    </div>
 </body>
 <script src="/../Amazing-PHP/assets/vendor/slick/slick.min.js"></script>
 <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/slick/slick-theme.css">
 <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/slick/slick.css">
 <script src="product.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".btn_buy_now").click(function(){
+            var quantity = $("#value_quantity").val();
+            var product_id = $(this).data("product_id");
+           $.ajax({
+               type: "GET",
+               url: "add_cart.php",
+               data:{
+                   quantity,product_id
+               },
+               dataType: "json",
+               success: function(response) {
+                    if(Number.isInteger(Number(response))){
+                        var html = '<span>Sản phẩm bạn chọn chỉ còn '+response+' sản phẩm <span>';
+                        $("#result_check_quantity").html(html);
+                    }else{
+                        var result_quantity_cart ='<div class="quantity_cart">'+response.quantity_cart+'</div>';
+                        $("#result_quantity_cart").html(result_quantity_cart);
+                        $("#result_cart_header").html(response.cart_header);
+                    }
+               }
+           });
+        });
+    });
+</script>
 <?php else:?>
     <script>
         location.replace("/../Amazing-PHP/frontend/");
