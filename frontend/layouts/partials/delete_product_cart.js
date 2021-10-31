@@ -16,7 +16,7 @@ $(document).ready(function(){
                     $("#result_sum_money_cart, #sum_money").html(response.sum_money);
                     $("."+product_id).remove();
                 }
-                if(Number(response.quantity_cart) != 0){
+                if(Number(response.quantity_cart) > 0){
                     $("#result_quantity_cart").html('<div class="quantity_cart">'+response.quantity_cart+'</div>');
                     $("#sum_quantity").html(response.quantity_cart+' sản phẩm');
                 }else{

@@ -1,3 +1,8 @@
+<?php
+    if(session_id()===""){
+        session_start();
+    }
+?>
 <link rel="stylesheet" href="/../Amazing-PHP/backend/layouts/css/style_slidebar.css">
 <script src="/../Amazing-PHP/assets/vendor/jquery.min.js"></script>
 <div class="slidebar_container">
@@ -7,7 +12,7 @@
     </a>
     <div class="slidebar_content">
         <div class="slidebar_user">
-            <i class="fas fa-user-circle"></i> <span class="text">Nguyễn Công Thiện</span> 
+            <i class="fas fa-user-circle"></i> <span class="text"><?=$_SESSION['user']?></span> 
         </div>
         <div class="slidebar_menu">
             <label class="slider_menu--header" data-toggle="collapse" href="#menu" for="check_show_menu">

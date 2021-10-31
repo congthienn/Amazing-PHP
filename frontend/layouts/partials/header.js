@@ -66,7 +66,7 @@ $(document).ready(function(){
                             icon:"success"
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                
+                                location.reload();
                             }
                         });;
                     }
@@ -151,7 +151,7 @@ $(document).ready(function(){
                     type: "GET",
                     url: "/../../../../Amazing-PHP/frontend/layouts/partials/logout.php",
                     success: function(response){
-                       
+                       location.reload();
                     }
                 });
             }

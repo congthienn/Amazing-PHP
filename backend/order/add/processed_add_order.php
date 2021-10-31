@@ -1,5 +1,8 @@
 <?php
     include_once __DIR__ . '/../../connect_db.php';
+    if(session_id()===""){
+        session_start();
+    }
     if(isset($_POST['btn_insertOrder'])){
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         function rand_string(){
@@ -11,6 +14,13 @@
             }
             return $str;
         }
+        $staff_email = $_SESSION['email'];
+        $sql_select_staff = <<<EOT
+            SELECT * FROM nhanvien WHERE Email = '$staff_email';
+        EOT;
+        $query_staff = mysqli_query($conn,$sql_select_staff);
+        $result_staff = mysqli_fetch_array($query_staff,MYSQLI_ASSOC);
+        $staff_id = $result_staff['MSNV'];
         $mdh = rand_string();
         $mskh = $_POST['customer_information'];
         $ngaydh = date("Y-m-d H:i:s",time());
@@ -28,7 +38,7 @@
         $product_price = $_POST['order_product_price'];
         $sql_insert_order = <<<EOT
             INSERT INTO dathang(SoDonDH,MSKH,MSNV,NgayDH,NgayGH,ThanhToan,HinhThucNhanHang,DiaChiNhanHang,TrangThaiDH)
-            VALUES ('$mdh','$mskh','NV523206','$ngaydh','$ngaygiao','$trangthai_tt','$hinhthucnhanhang','$diachinhanhang','$trangthaidonhang');
+            VALUES ('$mdh','$mskh','$staff_id','$ngaydh','$ngaygiao','$trangthai_tt','$hinhthucnhanhang','$diachinhanhang','$trangthaidonhang');
         EOT;
         if(mysqli_query($conn,$sql_insert_order)){
             for($i=0;$i<count($product_id);$i++){
