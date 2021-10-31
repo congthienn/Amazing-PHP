@@ -1,7 +1,7 @@
 <?php
     include_once __DIR__ . '/connect_db.php';
     $sql_select_month_year = <<<EOT
-        SELECT DISTINCT MONTH(NgayDH) month , YEAR(NgayDH) year FROM dathang LIMIT 3
+        SELECT DISTINCT MONTH(NgayDH) month , YEAR(NgayDH) year FROM dathang ORDER BY MONTH DESC LIMIT 3
     EOT;
     $query_month_year = mysqli_query($conn,$sql_select_month_year);
     $data_date = [];

@@ -15,6 +15,7 @@ $(document).ready(function(){
             that.parent().find(".value_cart_product--quantity").prop("value",response.product_quantity);
             $("."+product_id).find(".value_cart_product--quantity").prop("value",response.product_quantity);
             $("#result_quantity_cart").html('<div class="quantity_cart">'+response.quantity_cart_header+'</div>');
+            $("#sum_quantity").html(response.quantity_cart_header+' sản phẩm');
             that.parent().parent().parent().find("#money_abc").html('<strong>Thành tiền : </strong>'+response.item_sum);
         }
     });
