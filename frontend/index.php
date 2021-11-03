@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Adidas Chính hãng, Converse Chính hãng</title>
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <link rel="stylesheet" href="/../Amazing-PHP/frontend/index.css">
 </head>
 <body>

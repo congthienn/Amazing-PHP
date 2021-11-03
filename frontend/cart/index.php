@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Giỏ hàng</title>
     <link rel="stylesheet" href="/../Amazing-PHP/frontend/producer/producer.css">
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <link rel="stylesheet" href="cart.css">
 </head>
 <body>

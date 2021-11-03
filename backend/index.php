@@ -7,6 +7,7 @@
     <title>Amazing | Trang Admin</title>
     <?php include_once __DIR__ . '/../../Amazing-PHP/assets/vendor/library.php'?>
     <script src="/../Amazing-PHP/assets/vendor/chart.min.js"></script>
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <link rel="stylesheet" href="report.css">
 </head>
 <body>
