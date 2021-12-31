@@ -32,6 +32,8 @@
             SELECT * FROM chucvu WHERE cv_id = '$staff_position';
         EOT;
         $query_position = mysqli_query($conn,$sql_select_position);
+        $staff_password = rand_string_password();
+        $staff_password_encode = sha1(sha1(md5(md5(sha1($staff_password)))));
         $result_position = mysqli_fetch_array($query_position,MYSQLI_ASSOC);
         //Kiem tra validation ben server
         if(empty($staff_email) || empty($staff_location) || empty($staff_name) || empty($staff_phone) || empty($staff_position)){
@@ -61,7 +63,7 @@
                 $staff_password = rand_string_password();
                 $staff_password_encode = sha1(sha1(md5(md5(sha1($staff_password)))));
                 $sql_update_mail = <<<EOT
-                    UPDATE nhanvien SET Email = '$staff_email',Password = '$staff_password' WHERE MSNV = '$staff_id'
+                    UPDATE nhanvien SET Email = '$staff_email',Password = '$staff_password_encode' WHERE MSNV = '$staff_id'
                 EOT;
                 if(mysqli_query($conn,$sql_update_mail)){
                     echo "<script>alert('Thêm mới thông tin nhân viên thành công')</script>";
