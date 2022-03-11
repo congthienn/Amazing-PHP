@@ -39,8 +39,9 @@
                             <div class="col l-8">
                                 <div class="cart__product--container">
                                     <div class="cart__product--header">
-                                        Giỏ hàng của bạn <i class="fas fa-angle-double-right icon_next"></i>
+                                       <h2>Giỏ hàng của bạn <i class="fas fa-angle-double-right icon_next"></i></h2>
                                     </div>
+                                    <span>Các mặt hàng trong giỏ hàng của bạn không được bảo lưu – hãy kiểm tra ngay để đặt hàng.</span>
                                     <?php $data_cart = $_SESSION['cart']?>
                                     <?php $sum_quantity = 0?>
                                     <?php foreach($data_cart as $val=>$product_item):?>
@@ -70,6 +71,10 @@
                                         <?php $sum_quantity += $product_item['product_quantity']?>
                                     <?php endforeach;?> 
                                 </div>
+                                <div>
+
+                                </div>
+                                <button class="footer__register--button">Thanh toán <i class="fas fa-long-arrow-alt-right"></i></button>
                             </div>
                             <div class="col l-4">
                                 <div class="cart__product--pay">

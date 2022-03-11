@@ -54,6 +54,7 @@
     cursor: pointer;
     background-color: black;
     color: white;
+    min-width: 250px;
 }
 .footer__register--button:hover{
     color: grey;
