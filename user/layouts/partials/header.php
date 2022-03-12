@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/../Amazing-PHP/user/layouts/css/header.css">
 <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <?php
     if(session_id() ===""){
         session_start();
@@ -16,6 +17,9 @@
     }
     if(isset($_COOKIE["Cart"]) && !empty($_COOKIE['Cart'])){
         $_SESSION['cart'] = json_decode($_COOKIE['Cart'],true);
+    }
+    if(isset($_COOKIE["Quantity"]) && !empty($_COOKIE['Quantity'])){
+        $_SESSION['quantity_cart'] = $_COOKIE['Quantity'];
     }
     // unset($_SESSION['cart']);
     // unset( $_SESSION['quantity_cart']);
@@ -122,7 +126,7 @@
                                 </div>
                                 <div class="button_cart">
                                     <div>
-                                        <a href="" class="button_cart--item pay_now">Tiến hành thanh toán</a>
+                                        <a href="/../Amazing-PHP/user/delivery/" class="button_cart--item pay_now">Tiến hành thanh toán</a>
                                     </div>
                                     <div>
                                         <a href="/../Amazing-PHP/user/cart/" class="button_cart--item go_cart">Đi đến giỏ hàng</a>

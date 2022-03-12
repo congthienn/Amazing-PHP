@@ -39,6 +39,7 @@
             }
         }
     setcookie("Cart",json_encode($data_cart),time()+(30*24*3600),'/');
+    setcookie("Quantity",$_SESSION["quantity_cart"],time()+(30*24*3600),'/');
     $data_result = [];
     $sum_money = 0;
     $result_cart_header = '
@@ -114,7 +115,7 @@
                                             </div>
                                         </div>
                                         <div class="money">
-                                         <span id="money_abc"><strong>Thành tiền :</strong> '.number_format(($product_item['product_price'] * $product_item['product_quantity']),0,',','.').'đ</span>
+                                         <span id="money_abc" style="font-size: 20px;">'.number_format(($product_item['product_price'] * $product_item['product_quantity']),0,',','.').'đ</span>
                                             <div class="cart_product--delete" data-product_id="'.$product_item['product_id'].'">
                                                 <i class="fas fa-times"></i>
                                             </div>
@@ -128,7 +129,7 @@
                                 </div>
                                 <div class="buy_now--button">
                                     <div class="continue_buy buy_now--button__item">Tiếp tục mua hàng</div>
-                                    <a href="" class="buy_now--pay buy_now--button__item">Tiến hành thanh toán</a>
+                                    <a href="/../Amazing-PHP/user/delivery/" class="buy_now--pay buy_now--button__item">Tiến hành thanh toán</a>
                                 </div>
                             </div>
                     </div> 

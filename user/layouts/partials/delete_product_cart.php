@@ -13,11 +13,13 @@
         $result_cart_header = 0;
         unset($_SESSION['cart']);
         $result_buy_now = '';
-        unset($_SESSION['quantity_cart']);
         setcookie("Cart",json_encode($data_cart),time()-60,'/');
+        setcookie("Quantity",$_SESSION['quantity_cart'],time()-60,'/');
+        unset($_SESSION['quantity_cart']);
     }else{
         $_SESSION['cart'] = $data_cart;
         setcookie("Cart",json_encode($data_cart),time()+(30*24*3600),'/');
+        setcookie("Quantity",$_SESSION['quantity_cart'],time()+(30*24*3600),'/');
         $sum_money = 0;
         foreach($data_cart as $val=>$product_item){
             $sum_money += $product_item['product_price'] * $product_item['product_quantity'];

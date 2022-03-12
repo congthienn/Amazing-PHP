@@ -54,13 +54,15 @@
 }
 .cart__product--name{
     font-weight: 700;
+    flex: 1;
 }
 .cart__product--price{
     padding-top: 3px;
 }
 .cart__product--infor{
-    width: 250px;
+    width: 300px;
     margin: 0 10px;
+    font-size: 20px;
 }
 .cart__product--sumMoney{
     position: relative;
@@ -68,11 +70,9 @@
     left: 20px;
 }
 .cart__product--pay{
-    margin-top: 10px;
-    margin-left: 30px;
-    border: 1px solid black;
+    padding-top: 35px;
+    margin-left: 10px;
     min-height: 180px;
-    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.4);
 }
 .cart__pay--sumQuantity{
     font-size: 17px;
@@ -105,4 +105,39 @@
     border-radius: 3px;
     background: rgb(136,139,139);
     background: linear-gradient(305deg, rgba(136,139,139,1) 21%, rgba(97,97,97,1) 67%, rgba(0,0,0,1) 100%, rgba(75,75,75,1) 100%);
+}
+a.footer__register--button.payment,#submit_code .footer__register--button.payment{
+    text-align: left;
+    font-size: 15px;
+    margin-bottom: 20px;
+    width: 300px;
+}
+.cart__product--pay .payment{
+    min-width: 100%;
+}
+#money_abc{
+    font-size: 20px;
+}
+.cart__product--detail{
+    display: flex;
+    justify-content: space-between;
+}
+#code{
+    margin-top:15px;
+    height: 50px;
+    font-size: 20px;
+    padding: 15px;
+    width: 100%;
+    border: 1px solid #767677;
+}
+#code:focus{
+    outline: none;
+}
+#code::placeholder{
+    font-size:17px;
+}
+#submit_code{
+    margin-top: 10px;
+    margin-bottom: 0;
+    display:none;
 }

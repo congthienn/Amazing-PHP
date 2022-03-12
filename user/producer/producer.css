@@ -1,20 +1,6 @@
 .product_content{
     border: none;
 }
-.container_navbar{
-    border-bottom: 1px solid lightgray;
-}
-.navbar{
-    margin: 15px 0;
-    font-size: 17px;
-    font-weight: 600;
-    display: flex;
-    column-gap: 10px;
-    align-items: center;
-}
-.navbar a{
-    color: black;
-}
 .icon_navbar{
     position: relative;
     top: 2px;
