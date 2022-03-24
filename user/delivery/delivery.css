@@ -63,7 +63,7 @@
     display: inline-block;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 15px;
+    margin-top: 12px;
     cursor: pointer;
     font-size: 18px;
     -webkit-user-select: none;
@@ -80,36 +80,37 @@
     width: 0;
   }
   /* Create a custom checkbox */
-  .checkmark {
+  .checkmark,.checkmark_radio {
     position: absolute;
     top: 0;
     left: 0;
     height: 25px;
     width: 25px;
     background-color: #eee;
+    border: 1px solid black;
   }
   /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
+  .container:hover input ~ .checkmark,.container:hover input ~ .checkmark_radio {
     background-color: #ccc;
   }
   /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
+  .container input:checked ~ .checkmark,  .container input:checked ~ .checkmark_radio {
     background-color: black;
   }
   /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
+  .checkmark:after,.checkmark_radio:after {
     content: "";
     position: absolute;
     display: none;
   }
   /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
+  .container input:checked ~ .checkmark:after,.container input:checked ~ .checkmark_radio:after {
     display: block;
   }
   /* Style the checkmark/indicator */
   .container .checkmark:after {
-    left: 9px;
-    top: 5px;
+    left: 8px;
+    top: 4px;
     width: 5px;
     height: 10px;
     border: solid white;
@@ -118,3 +119,50 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+  .checkmark_radio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  .container .checkmark_radio:after {
+    top: 8px;
+    left: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+.error{
+    display: block;
+    padding-top: 10px;
+    font-size:16px !important;
+    color: rgb(207, 24, 24) !important;
+}
+.is-invalid{
+    border: 1px solid rgb(207, 24, 24);
+}
+.location{
+    display:flex;
+    margin-top: 20px;
+    column-gap: 10px;
+} 
+#receive{
+    font-size: 18px;
+    margin-top:20px;
+    margin-left: 37px;
+    display:none;
+}
+#card{
+    margin:0 37px;
+    display:none;
+}
+.payment{
+    text-transform: uppercase;
+}
+.checked_radio{
+    font-weight: bold;
+}

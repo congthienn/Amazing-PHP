@@ -12,7 +12,7 @@
             'district_name' => $row['name']
         );
     }
-    $result = '<option value="">Quận / Huyện</option>';
+    $result = '<option value="">Quận / Huyện *</option>';
     foreach($data_district as $val_district){
         $result .= '<option value="'.$val_district['district_id'].'">'.$val_district['district_name'].'</option>';
     }

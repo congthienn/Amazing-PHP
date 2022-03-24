@@ -33,7 +33,7 @@
                     <div class="col l-8">
                         <div class="container--information">
                             <div class="text-tile">Thông tin giao hàng</div>
-                            <form action="" method="POST">
+                            <form action="" method="POST" name="form_delivery" id="form_delivery">
                                 <div>
                                     <div class="label-title"><label for="name">Họ và tên người nhận *</label></div>
                                     <input id="name" name="name" type="text" class="input-delivery" placeholder="Ví dụ: Nguyễn Công Thiện">
@@ -46,7 +46,7 @@
                                     <div class="label-title"><label for="toanha">Tên tòa nhà / Số tầng</label></div>
                                     <input id="toanha" name="toanha" type="text" class="input-delivery" placeholder="Ví dụ: Tòa nhà X, chung cư 123...">
                                 </div>
-                                <div style="display: flex;margin-top: 20px;column-gap: 10px;">
+                                <div class="location">
                                     <div>
                                         <?php
                                             $sql_select_province = <<<EOT
@@ -63,7 +63,7 @@
                                             }
                                         ?>
                                         <select name="province" id="province" style="width: 391px;">
-                                            <option value="">Chọn Thành phố / Tỉnh *</option>
+                                            <option value="">Thành phố / Tỉnh *</option>
                                             <?php foreach($data_province as $val):?>
                                                 <option value="<?=$val["province_id"]?>" data-zipcode="<?=$val["zipcode"]?>"><?=$val["province_name"]?></option>
                                             <?php endforeach;?>
@@ -75,7 +75,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div style="display:flex;margin-top: 20px;column-gap: 10px;">
+                                <div class="location">
                                     <div>
                                         <select name="ward" id="ward" class="input-delivery" style="width: 391px;">
                                             <option value="">Xã / Phường *</option>
@@ -85,8 +85,63 @@
                                         <input type="text" id="zipcode" class="input-delivery" readonly placeholder="Mã bưu chính" style="width: 391px;">
                                     </div>
                                 </div>
-                                <div style="margin-top: 40px;">
-                                    <div>
+                                <div style="border: 1px solid lightgray;padding: 15px;margin-top: 20px;">
+                                    <span style="text-transform: uppercase;font-size: 18px;font-weight: 600;">Giao hàng tiêu chuẩn</span>
+                                    <div style="padding-top:5px">
+                                        <span style="font-size: 17px;">GHN (Do ảnh hưởng COVID-19, thời gian giao hàng sẽ kéo dài hơn dự kiến và chúng tôi chưa thể giao hàng đến một số khu vực. Thành thật xin lỗi vì sự bất tiện này!)</span>
+                                    </div>
+                                </div>
+                                <div style="padding-top:20px" class="payment-container">
+                                    <div class="text-tile">Phương thức thanh toán</div>
+                                    <div style="padding:10px 0 20px;font-size: 18px;">Tất cả các giao dịch đều an toàn và bảo mật</div>
+                                        <div>
+                                            <div style="display: flex;column-gap: 10px;align-items: center;">
+                                                <label class="container payment"> Thẻ tín dụng / Thẻ ghi nợ 
+                                                    <input type="radio" name="payment" class="radio_payment" value="1">
+                                                    <span class="checkmark_radio"></span>
+                                                </label>
+                                                <img src="/../Amazing-PHP/assets/uploads/aaa.png" alt="" style="position: relative;top: 7px;" width="150px" height="20px">
+                                            </div>
+                                           
+                                            <div id="card">
+                                                <div>
+                                                    <div class="label-title"><label for="number">Mã số thẻ *</label></div>
+                                                    <input id="number" name="number" type="text" class="input-delivery" style="width:500px;" placeholder="">
+                                                </div>
+                                                <div>
+                                                    <div class="label-title"><label for="name_card">Tên trên thẻ *</label></div>
+                                                    <input id="name_card" name="name_card" type="text" class="input-delivery" style="width:500px" placeholder="">
+                                                </div>
+                                                <div style="display:flex;column-gap: 20px;">
+                                                    <div>
+                                                        <div class="label-title"><label for="date_card">Ngày thẻ hết hạn *</label></div>
+                                                        <input id="date_card" style="width:240px" name="date_card" type="text" class="input-delivery" placeholder="Tháng / Năm">
+                                                    </div>
+                                                    <div>
+                                                    <div class="label-title"><label for="cvv_card">CVV *</label></div>
+                                                        <input id="cvv_card" style="width:240px" name="cvv_card" type="text" class="input-delivery" placeholder="Mã số bảo mật">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="margin-top:20px">
+                                            <label class="container payment"> Thanh toán khi nhận hàng
+                                                <input type="radio" name="payment" class="radio_payment" value="0">
+                                                <span class="checkmark_radio"></span>
+                                            </label>
+                                            <div id="receive">
+                                                <div>
+                                                     Không cần thanh toán trực tuyến - trả tiền mặt bằng cách sử dụng thay đổi chính xác sau khi các mặt hàng của bạn được giao!
+                                                </div>
+                                                <div style="padding-top: 15px;">
+                                                     Thông tin chi tiết về tài khoản ngân hàng của bạn sẽ chỉ được yêu cầu nếu bạn muốn trả lại bất kỳ sản phẩm nào để được hoàn tiền.
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                </div>
+                                <div style="margin-top: 40px;border-top: 1px solid lightgray;">
+                                    <div style="padding-top:20px">
                                         <label class="container">Thông tin thanh toán và giao hàng của tôi là giống nhau.
                                             <input type="checkbox" name="check_1" checked="checked">
                                             <span class="checkmark"></span>
@@ -111,7 +166,7 @@
                                         </label>
                                    </div>
                                    <div>
-                                        <button class="footer__register--button payment" style="margin: 40px 0;font-size: 15px;" href="/../Amazing-PHP/user/delivery/">Xem lại  &  Thanh toán <i class="fas fa-long-arrow-alt-right"></i></button>
+                                        <button class="footer__register--button payment" style="margin: 40px 0;font-size: 15px;" href="/../Amazing-PHP/user/delivery/">Đặt hàng <i class="fas fa-long-arrow-alt-right"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -167,7 +222,7 @@
                         </div>
                         <div style="padding-top: 15px;">
                             <span style="font-size:15px;text-transform: uppercase;font-weight: 505;">Phương thức thanh toán được chấp nhận</span>
-                            <img src="/../Amazing-PHP/assets/uploads/payment.webp" alt="" style="margin-top:10px">
+                            <img src="/../Amazing-PHP/assets/uploads/payment.webp" style="margin-top:10px">
                         </div>
                     </div>
                 </div>
@@ -179,6 +234,7 @@
     </div>
     <script src="/../Amazing-PHP/assets/vendor/select2/select2.min.js"></script>
     <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/select2/select2.css">
+    <script src="/../Amazing-PHP/assets/vendor/jquery.validate.min.js"></script>
     <script src="delivery.js"></script>
 </body>
 </html>

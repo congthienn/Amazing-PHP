@@ -13,6 +13,7 @@ $(document).ready(function(){
    
     $("#province").change(function(){
         $("#ward").html('<option value="">Xã / Phường</option>');
+        
         $("#stress").val('');
         var province_id = $(this).val();
         var text_location ='';
