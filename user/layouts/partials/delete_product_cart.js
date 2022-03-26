@@ -13,12 +13,12 @@ $(document).ready(function(){
                 if(Number(response.sum_money) == 0){
                     $("#result_cart_header").html(' <div class="container_cart"><span class="cart_empty">Không có sản phẩm nào trong giỏ hàng</span></div>');
                 }else{
-                    $("#result_sum_money_cart, #sum_money").html(response.sum_money);
+                    $('#result_sum_money_cart ,.sum_money').html(response.sum_money);
                     $("."+product_id).remove();
                 }
                 if(Number(response.quantity_cart) > 0){
                     $("#result_quantity_cart").html('<div class="quantity_cart">'+response.quantity_cart+'</div>');
-                    $("#sum_quantity").html(response.quantity_cart+' sản phẩm');
+                    $("#sum_quantity").html(response.quantity_cart+' các sản phẩm');
                 }else{
                     $("#result_quantity_cart").html('');
                 }

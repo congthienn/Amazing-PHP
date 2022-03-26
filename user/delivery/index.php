@@ -33,7 +33,7 @@
                     <div class="col l-8">
                         <div class="container--information">
                             <div class="text-tile">Thông tin giao hàng</div>
-                            <form action="" method="POST" name="form_delivery" id="form_delivery">
+                            <form action="processed_add_order.php" method="POST" name="form_delivery" id="form_delivery">
                                 <div>
                                     <div class="label-title"><label for="name">Họ và tên người nhận *</label></div>
                                     <input id="name" name="name" type="text" class="input-delivery" placeholder="Ví dụ: Nguyễn Công Thiện">
@@ -166,7 +166,7 @@
                                         </label>
                                    </div>
                                    <div>
-                                        <button class="footer__register--button payment" style="margin: 40px 0;font-size: 15px;" href="/../Amazing-PHP/user/delivery/">Đặt hàng <i class="fas fa-long-arrow-alt-right"></i></button>
+                                        <button class="footer__register--button payment" style="margin: 40px 0;font-size: 15px;" name="btn_order">Đặt hàng <i class="fas fa-long-arrow-alt-right"></i></button>
                                     </div>
                                 </div>
                             </form>

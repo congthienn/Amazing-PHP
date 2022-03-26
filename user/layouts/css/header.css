@@ -654,3 +654,6 @@ a{
     color: black;
     font-weight: 600;
 }
+.disable{
+    opacity: 0.5;
+}

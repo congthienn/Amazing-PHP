@@ -109,8 +109,9 @@
                                                     <div class="cart_product--quantity">
                                                         <input type="button" value="-" id="" class="btn_cart_quantity btn_cart_product--reduce" data-act="0" data-product_id="<?=$product_item['product_id']?>">
                                                         <input type="text" value="<?=$product_item['product_quantity']?>" class="value_cart_product--quantity" readonly>
-                                                        <input type="button" value="+" id="" class="btn_cart_quantity btn_cart_product--increase" data-act="1" data-product_id="<?=$product_item['product_id']?>">
+                                                        <input type="button" value="+" id="btn_increase_<?=$product_item["product_id"]?>" class="btn_cart_quantity btn_cart_product--increase" data-act="1" data-product_id="<?=$product_item['product_id']?>">
                                                     </div>
+                                                    <div class="error_quantity_<?=$product_item["product_id"]?>" style="margin-top:5px"></div> 
                                                     <div class="cart_product--delete" data-product_id="<?=$product_item['product_id']?>">
                                                         <i class="fas fa-times"></i>
                                                     </div>
@@ -125,8 +126,9 @@
                                     <div style="font-size: 20px;" id="result_sum_money_cart"><?=number_format($sum_money,0,',','.')?>đ</div>
                                 </div>
                                 <div class="button_cart">
+                                    <?php $user = (isset($_SESSION["user"]) && !empty($_SESSION["user"])) ? $_SESSION["user"] : "";?>
                                     <div>
-                                        <a href="/../Amazing-PHP/user/delivery/" class="button_cart--item pay_now">Tiến hành thanh toán</a>
+                                        <a href="/../Amazing-PHP/user/delivery/" class="button_cart--item pay_now button_payment" data-session_user="<?=$user?>">Tiến hành thanh toán</a>
                                     </div>
                                     <div>
                                         <a href="/../Amazing-PHP/user/cart/" class="button_cart--item go_cart">Đi đến giỏ hàng</a>

@@ -85,7 +85,8 @@
         </div>
     </div>
     <script src="/../Amazing-PHP/user/layouts/partials/up_down_quantity.js"></script>
-    <script src="/../Amazing-PHP/user/layouts/partials/delete_product_cart.js"></script>';
+    <script src="/../Amazing-PHP/user/layouts/partials/delete_product_cart.js"></script>
+    <script src="/../Amazing-PHP/user/layouts/partials/header.js"></script>';
     $quantity_cart = $_SESSION['quantity_cart'];
     $data_result['quantity_cart'] = $quantity_cart;
     $data_result['cart_header'] = $result_cart_header;
@@ -106,12 +107,13 @@
                                         <div class="product_cart--infor">
                                             <div class="product_cart--name">'.$product_item['product_name'].'</div>
                                             <div class="product_cart--price">'.number_format($product_item['product_price'],0,',','.').'đ</div>
+                                            <div class="error_quantity_'.$product_item["product_id"].'" style="margin-top:10px"></div> 
                                         </div>
                                         <div>
                                             <div class="cart_product--quantity">
                                                 <input type="button" value="-" id="" class="btn_cart_quantity btn_cart_product--reduce" data-act="0" data-product_id="'.$product_item['product_id'].'">
                                                 <input type="text" value="'.$product_item['product_quantity'].'" class="value_cart_product--quantity" readonly>
-                                                <input type="button" value="+" id="" class="btn_cart_quantity btn_cart_product--increase" data-act="1" data-product_id="'.$product_item['product_id'].'">
+                                                <input type="button" value="+" id="btn_increase_'.$product_item["product_id"].'" class="btn_cart_quantity btn_cart_product--increase" data-act="1" data-product_id="'.$product_item['product_id'].'">
                                             </div>
                                         </div>
                                         <div class="money">
@@ -123,13 +125,14 @@
                                     </div>';
                                     $sum_money += $product_item['product_price'] * $product_item['product_quantity'];
                                 endforeach;
+                            $user = (isset($_SESSION["user"]) && !empty($_SESSION["user"])) ? $_SESSION["user"] : "";
                             $result_buy_now .='
                                 <div class="buy_now_sum-money">
                                     <strong>Tổng tiền : </strong> <span id="sum_money">'.number_format($sum_money,0,',','.').'đ</span>
-                                </div>
-                                <div class="buy_now--button">
+                                </div>                                <div class="buy_now--button">
                                     <div class="continue_buy buy_now--button__item">Tiếp tục mua hàng</div>
-                                    <a href="/../Amazing-PHP/user/delivery/" class="buy_now--pay buy_now--button__item">Tiến hành thanh toán</a>
+                                    
+                                    <a href="/../Amazing-PHP/user/delivery/" class="buy_now--pay buy_now--button__item button_payment" data-session_user="'.$user.'">Tiến hành thanh toán</a>
                                 </div>
                             </div>
                     </div> 

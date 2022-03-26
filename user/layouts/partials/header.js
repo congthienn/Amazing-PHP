@@ -256,4 +256,27 @@ $(document).ready(function(){
         e.stopPropagation();
         $("#result_search").show();
     });
+    //Check login before payment
+    $(".button_payment").click(function (e) { 
+        e.preventDefault();
+        var user = $(this).data("session_user");
+        if(user === ""){
+            Swal.fire({
+                title: 'Vui lòng đăng nhập trước khi xác nhận thanh toán!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#333333',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đăng nhập'
+            }).then((result) => {
+                if (result.isConfirmed) {   
+                    $(".login").addClass("show_login");
+                    $("html").addClass("over_flow");
+                    $(".buy_now").hide();
+                }
+            })
+        }else{
+            location.replace("/../Amazing-PHP/user/delivery/");
+        }
+    });
 });

@@ -69,11 +69,12 @@
                                                 </div>
                                                 <div style="margin: 0 10px;">
                                                     <div class="cart_product--quantity">
-                                                        <input type="button" value="-" id="" class="btn_cart_quantity btn_cart_product--reduce" data-act="0" data-product_id="<?=$product_item['product_id']?>">
+                                                        <input type="button" value="-" id="btn_reduce_<?=$product_item["product_id"]?>" class="btn_cart_quantity btn_cart_product--reduce" data-act="0" data-product_id="<?=$product_item['product_id']?>">
                                                         <input type="text" id="<?=$product_item['product_id']?>" value="<?=$product_item['product_quantity']?>" class="value_cart_product--quantity" readonly>
-                                                        <input type="button" value="+" id="" class="btn_cart_quantity btn_cart_product--increase" data-act="1" data-product_id="<?=$product_item['product_id']?>">
+                                                        <input type="button" value="+" id="btn_increase_<?=$product_item["product_id"]?>" class="btn_cart_quantity btn_cart_product--increase" data-act="1" data-product_id="<?=$product_item['product_id']?>">
                                                     </div>
-                                                </div> 
+                                                    <div class="error_quantity_<?=$product_item["product_id"]?>" style="margin-top:10px"></div> 
+                                                </div>
                                             </div>
                                             
                                         </div>
@@ -81,14 +82,14 @@
                                     <?php endforeach;?> 
                                 </div>
                                 <div>
-
                                 </div>
-                                <a class="footer__register--button payment" href="/../Amazing-PHP/user/delivery/">Thanh toán <i class="fas fa-long-arrow-alt-right"></i></a>
+                                <?php $user = (isset($_SESSION["user"]) && !empty($_SESSION["user"])) ? $_SESSION["user"] : "";?>
+                                <a class="footer__register--button payment button_payment" data-session_user="<?=$user?>" href="/../Amazing-PHP/user/delivery/">Thanh toán <i class="fas fa-long-arrow-alt-right"></i></a>
                             </div>
                             <div class="col l-4">
                                 <div class="cart__product--pay">
                                     <div>
-                                        <a class="footer__register--button payment" href="/../Amazing-PHP/user/delivery/">Thanh toán <i class="fas fa-long-arrow-alt-right"></i></a>
+                                        <a class="footer__register--button payment button_payment" data-session_user="<?=$user?>" href="/../Amazing-PHP/user/delivery/">Thanh toán <i class="fas fa-long-arrow-alt-right"></i></a>
                                     </div>
                                     <div style="border: 1px solid lightgrey;padding: 20px;text-transform: uppercase;">
                                         <div>
