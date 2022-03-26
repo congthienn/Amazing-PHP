@@ -34,9 +34,21 @@
                         <div class="container--information">
                             <div class="text-tile">Thông tin giao hàng</div>
                             <form action="processed_add_order.php" method="POST" name="form_delivery" id="form_delivery">
+                                <?php
+                                    $email = $_SESSION["email"];
+                                    $sql_selectUser = <<<EOT
+                                        SELECT * FROM khachhang WHERE EmailKH = "$email"
+                                    EOT;
+                                    $query_select_user = mysqli_query($conn,$sql_selectUser);
+                                    $resul_user = mysqli_fetch_array($query_select_user,MYSQLI_ASSOC);
+                                ?>
                                 <div>
                                     <div class="label-title"><label for="name">Họ và tên người nhận *</label></div>
-                                    <input id="name" name="name" type="text" class="input-delivery" placeholder="Ví dụ: Nguyễn Công Thiện">
+                                    <input id="name" name="name" value="<?=$resul_user['HoTenKH']?>" readonly class="input-delivery" placeholder="Ví dụ: Nguyễn Công Thiện">
+                                </div>
+                                <div>
+                                    <div class="label-title"><label for="phone">Số điện thoại nhận hàng *</label></div>
+                                    <input id="phone" name="phone" value="<?=$resul_user['SoDienThoai']?>" readonly class="input-delivery" placeholder="Ví dụ: 0911440609">
                                 </div>
                                 <div>
                                     <div class="label-title"><label for="sonha">Số nhà / tên đường *</label></div>
@@ -62,7 +74,7 @@
                                                 );
                                             }
                                         ?>
-                                        <select name="province" id="province" style="width: 391px;">
+                                        <select name="provinde" id="provinde" style="width: 391px;">
                                             <option value="">Thành phố / Tỉnh *</option>
                                             <?php foreach($data_province as $val):?>
                                                 <option value="<?=$val["province_id"]?>" data-zipcode="<?=$val["zipcode"]?>"><?=$val["province_name"]?></option>
@@ -126,7 +138,7 @@
                                         </div>
                                         <div style="margin-top:20px">
                                             <label class="container payment"> Thanh toán khi nhận hàng
-                                                <input type="radio" name="payment" class="radio_payment" value="0">
+                                                <input type="radio" name="payment" class="radio_payment" value="2">
                                                 <span class="checkmark_radio"></span>
                                             </label>
                                             <div id="receive">
@@ -136,32 +148,31 @@
                                                 <div style="padding-top: 15px;">
                                                      Thông tin chi tiết về tài khoản ngân hàng của bạn sẽ chỉ được yêu cầu nếu bạn muốn trả lại bất kỳ sản phẩm nào để được hoàn tiền.
                                                 </div>
-                                               
                                             </div>
                                         </div>
                                 </div>
                                 <div style="margin-top: 40px;border-top: 1px solid lightgray;">
                                     <div style="padding-top:20px">
                                         <label class="container">Thông tin thanh toán và giao hàng của tôi là giống nhau.
-                                            <input type="checkbox" name="check_1" checked="checked">
+                                            <input type="checkbox" value="true" name="check_1" checked="checked">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                     <div>
                                         <label class="container">Có, tôi trên 15 tuổi *
-                                            <input type="checkbox" name="check_2">
+                                            <input type="checkbox" value="true" name="check_2">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                    <div>
                                         <label class="container">Tôi theo đây đồng ý việc chuyển giao, chia sẻ, sử dụng, thu thập và tiết lộ thông tin cá nhân của tôi cho các bên thứ ba được quy định tại Chính sách Bảo mật Amazing-PHP *
-                                            <input type="checkbox" name="check_3">
+                                            <input type="checkbox" value="true" name="check_3">
                                             <span class="checkmark"></span>
                                         </label>
                                    </div>
                                    <div>
                                        <label class="container">Tôi đã đọc, hiểu và chấp thuận Chính sách Bảo mật và Các Điều khoản và Điều kiện.*
-                                            <input type="checkbox" name="check_4">
+                                            <input type="checkbox" value="true" name="check_4">
                                             <span class="checkmark"></span>
                                         </label>
                                    </div>

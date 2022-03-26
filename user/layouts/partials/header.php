@@ -45,7 +45,7 @@
                                     <?php if(isset($_SESSION['staff']) && ($_SESSION['staff'])==1):?>
                                         <a href="/../Amazing-PHP/admin/"><li class="container_user_logined--item"><img src="/../Amazing-PHP/assets/uploads/AdminLTELogo.png" width="28px">Amazing Admin</li></a>
                                     <?php endif;?>
-                                    <li class="container_user_logined--item"><span><i class="fas fa-user-shield"></i> Tài khoản</span></li>
+                                    <a href="/../Amazing-PHP/user/account/"><li class="container_user_logined--item"><span><i class="fas fa-user-shield"></i> Tài khoản</span></li></a>
                                     <li class="container_user_logined--item btn_logout"><span><i class="fas fa-sign-out-alt"></i> Đăng xuất</span></li>
                                 </ul>
                             </div>

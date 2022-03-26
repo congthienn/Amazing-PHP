@@ -28,59 +28,9 @@
     $query_customer = mysqli_query($conn,$sql_select_customer);
     $customer = mysqli_fetch_array($query_customer,MYSQLI_ASSOC);
 
-    $sql_select_staff = <<<EOT
-        SELECT * FROM nhanvien nv JOIN chucvu cv ON nv.cv_id = cv.cv_id  WHERE Email = '$email';
-    EOT;
-    $query_staff = mysqli_query($conn,$sql_select_staff);
-    $staff = mysqli_fetch_array($query_staff,MYSQLI_ASSOC);
     if(($customer == 0) && ($staff == 0)){
         echo json_encode("error");
-    }else if($staff > 0){
-        $sql_updatePassword = <<<EOT
-        UPDATE nhanvien SET Password = '$customer_password_encode' WHERE Email = '$email';
-        EOT;
-        mysqli_query($conn,$sql_updatePassword);
-        $mail = new PHPMailer(true);  
-        try {
-            $mail->SMTPDebug = 2;       
-            $mail->isSMTP();                           
-            $mail->Host = 'smtp.gmail.com'; 
-            $mail->SMTPAuth = true;                             
-            $mail->Username = 'congthienn1601@gmail.com'; 
-            $mail->Password = 'nqhqshsiteocbyul';                 
-            $mail->SMTPSecure =  PHPMailer::ENCRYPTION_SMTPS;                             
-            $mail->Port = 465;                                      
-            $mail->CharSet = "UTF-8";
-            $mail->setFrom('Amazing@gmail.com', 'Amazing');
-            $mail->addAddress($email);              
-            $mail->addReplyTo('congthienn1601@gmail.com');
-            $mail->isHTML(true);                                    
-            $mail->Subject = "Thông báo cấp lại mật khẩu tài khoản người dùng trên Amazing";         
-            $body = '
-                <div style="display: flex;justify-content: center; font-size: 17px;position: relative;top: 50%;transform: translateY(-60%);">
-                    <div>
-                        <div style="border: 1px solid black;min-height: 200px;display: inline-block;padding: 20px 20px 40px 20px;border-radius: 5px;">
-                            <div style="margin: 10px 0 20px;"><span style="font-size: 20px;">Amazing xin chào,</span></div>
-                                <div>Xin chào <span style="font-weight: 700;">'.$staff['HoTenNV'].'</span>, mật khẩu '.$staff['cv_ten'].'của bạn vừa được đặt lại thành công trên Amazing !</div>
-                                <div style="margin: 5px 0;">Đây là mật khẩu đăng nhập tài khoản của bạn:</div>
-                                <div style="font-size: 15px;font-style: italic;">(Bạn vui lòng không cung cấp mật khẩu này cho ai khác)</div>
-                                <div style="display: flex;justify-content: center;align-items: center;">
-                                <div style="border: 1px lightgray solid;display: inline-block;padding: 10px;margin: 30px 0;border-radius: 4px;font-weight: 600;color: blue;">
-                                '.$customer_password.'
-                                </div>
-                            </div>
-                            <div><span style="font-style: italic;">Copyright &copy; <i class="far fa-copyright"></i> Amazing 2020-2021</span></div>
-                        </div>
-                    </div>
-                </div>
-            ';
-            $mail->Body = $body;
-            $mail->send();
-        } catch (Exception $e) {
-            echo 'Lỗi khi gởi mail: ', $mail->ErrorInfo;
-        }
-    }
-    else if($customer > 0){
+    }else if($customer > 0){
         $sql_updatePassword = <<<EOT
             UPDATE khachhang SET Password = '$customer_password_encode' WHERE EmailKH = '$email';
         EOT;

@@ -61,11 +61,9 @@
                 if(!isset($_SESSION['user'])){
                     $_SESSION['user'] = $customer_name;
                     $_SESSION['email'] = $customer_email;
-                    $_SESSION['staff'] = 0;
                 }else{
                     $_SESSION['user'] = $customer_name;
                     $_SESSION['email'] = $customer_email;
-                    $_SESSION['staff'] = 0;
                 }
                 $mail = new PHPMailer(true);  
                 try {

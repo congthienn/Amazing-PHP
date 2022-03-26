@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    $("#province,#district,#ward").select2();
-    $("#province").change(function(){
+    $("#provinde,#district,#ward").select2();
+    $("#provinde").change(function(){
         $("#ward").html('<option value="">Xã / Phường *</option>');
         var zipcode = $(this).find("option:selected").data("zipcode");
         var province_id = $(this).val();
@@ -51,8 +51,20 @@ $(document).ready(function(){
             payment:{required:true},
             number:{required: true},
             name_card:{required:true},
-            cvv_card:{required: true},
-            date_card:{required: true},
+            cvv_card:{
+                required: true,
+                remote: {
+                    url:"checkCVV.php",
+                    type:"GET"
+                }
+            },
+            date_card:{
+                required: true,
+                remote: {
+                    url:"checkFormatDate.php",
+                    type:"GET"
+                }
+            },
         },
         messages:{
             name:{required: "Vui lòng điền tên người nhận hàng"},
@@ -66,8 +78,8 @@ $(document).ready(function(){
             payment:{required:"Vui lòng chọn hình thức thanh toán cho đơn hàng"},
             number:{required: "Vui lòng nhập mã số của thẻ"},
             name_card:{required:"Vui lòng nhập tên trên thẻ"},
-            cvv_card:{required: "Vui lòng nhập mã số bảo mật của thẻ"},
-            date_card:{required: "Vui lòng nhập ngày thẻ hết hạn"},
+            cvv_card:{required: "Vui lòng nhập mã số bảo mật của thẻ",remote:"Định dạng không hợp lệ (gồm 3 số)"},
+            date_card:{required: "Vui lòng nhập ngày thẻ hết hạn",remote:"Định dạng không hợp lệ"},
         },
         errorElement: "em",
         errorPlacement: function (error, element) {

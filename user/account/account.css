@@ -1,0 +1,89 @@
+.sildebar--item{
+    font-size: 17px;
+    font-weight: 600;
+    padding: 10px 0 10px 40px;
+    cursor: pointer;
+}
+.container_account{
+    padding: 20px;
+}
+.title{
+    font-size:22px;
+    font-weight:600;
+}
+.account_information{
+    padding-top: 30px;
+}
+.information--item{
+    display:flex;
+    column-gap: 30px;
+    padding: 8px 0;
+    font-size: 17px;
+    align-items: center;
+}
+.label-item{
+    font-weight: 600;
+}
+.fas.fa-pen-square.edit{
+    display:none;
+}
+.item-edit{
+    cursor: pointer;
+}
+.item-edit:hover > .fas.fa-pen-square.edit{
+    display:inline-block;
+}
+.input-text{
+    padding: 5px 5px;
+    font-size:17px;
+    width: 280px;
+    border: 1px solid black;
+}
+.input-text:focus{
+    outline: none;
+}
+.icon{
+    font-size:18px;
+}
+.edit.hide{
+    display:none !important;
+}
+.btn-account{
+    padding: 5px 10px;
+    font-size: 17px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+}
+.save{
+    background:black;
+    color: white;
+    margin-right: 5px;
+}
+.container-btn{
+    display: none;
+}
+.changer_password{
+    cursor: pointer;
+}
+.information--item__changerpassword{
+    display: flex;
+    column-gap: 30px;
+    padding: 8px 0;
+    font-size: 17px;
+}
+.text-password{
+    padding: 5px 5px;
+    font-size:17px;
+    display: block;
+    margin: 8px 0;
+    width: 280px;
+    border-radius: 2px;
+    border: 1px solid black;
+}
+.text-password:focus{
+    outline: none;
+}
+.container_changer_password{
+    display: none;
+}

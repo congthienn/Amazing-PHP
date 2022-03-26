@@ -24,6 +24,7 @@
         $mdh = rand_string();
         $mskh = $_POST['customer_information'];
         $ngaydh = date("Y-m-d H:i:s",time());
+        
         $ngaygiao = $_POST['delivery_date'];
         $trangthai_tt = $_POST['pay'];
         if(isset($_POST['text_location']) && !empty($_POST['text_location'])){
