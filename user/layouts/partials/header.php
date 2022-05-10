@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/../Amazing-PHP/assets/vendor/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
 <?php
     if(session_id() ===""){
         session_start();
@@ -11,9 +12,6 @@
     }
     if(isset($_COOKIE['Email']) && !empty($_COOKIE['Email'])){
         $_SESSION['email'] = $_COOKIE['Email'];
-    }
-    if(isset($_COOKIE['Staff']) && !empty($_COOKIE['Staff'])){
-        $_SESSION['staff'] = $_COOKIE['Staff'];
     }
     if(isset($_COOKIE["Cart"]) && !empty($_COOKIE['Cart'])){
         $_SESSION['cart'] = json_decode($_COOKIE['Cart'],true);
@@ -39,12 +37,9 @@
                     <li class="child-item btn_map"><i class="fas fa-map-marker-alt"></i> Tìm cửa hàng</li>
                     <?php if(isset($_SESSION['user']) && !empty($_SESSION['user'])):?>
                         <li class="child-item last_child child-item__user">
-                            <span><i class="fas fa-user-circle"></i> <?=$_SESSION['user']?></span>
+                            <span><i class="fas fa-user-circle"></i> <span id="user_name"><?=$_SESSION['user']?></span></span>
                             <div class="container_user_logined">
                                 <ul>
-                                    <?php if(isset($_SESSION['staff']) && ($_SESSION['staff'])==1):?>
-                                        <a href="/../Amazing-PHP/admin/"><li class="container_user_logined--item"><img src="/../Amazing-PHP/assets/uploads/AdminLTELogo.png" width="28px">Amazing Admin</li></a>
-                                    <?php endif;?>
                                     <a href="/../Amazing-PHP/user/account/"><li class="container_user_logined--item"><span><i class="fas fa-user-shield"></i> Tài khoản</span></li></a>
                                     <li class="container_user_logined--item btn_logout"><span><i class="fas fa-sign-out-alt"></i> Đăng xuất</span></li>
                                 </ul>

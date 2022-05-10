@@ -6,6 +6,9 @@
 }
 .container_account{
     padding: 20px;
+    margin-bottom:15px;
+    background-color: white;
+    background-color: white;box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
 }
 .title{
     font-size:22px;
@@ -63,10 +66,10 @@
 .container-btn{
     display: none;
 }
-.changer_password{
+.change_password{
     cursor: pointer;
 }
-.information--item__changerpassword{
+.information--item__changepassword{
     display: flex;
     column-gap: 30px;
     padding: 8px 0;
@@ -84,6 +87,67 @@
 .text-password:focus{
     outline: none;
 }
-.container_changer_password{
+.container_change_password{
     display: none;
+}
+#error{
+    color: rgb(179, 15, 15);
+}
+.sildebar--item a{
+    color: black;
+    display: block;
+}
+.empty_order{
+    height: 150px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:25px;
+}
+.order-id{
+    font-size:18px;
+    font-weight:bold;
+}
+.btn_status{
+    font-size:18px;
+    font-weight: bold;
+}
+.btn_process{
+    color: orangered
+}
+.btn_delivery{
+    color: blue;
+}
+.btn_success{
+    color: green;
+}
+.order-item{
+    padding:5px 0;
+    border-bottom: 1px solid lightgray;
+}
+.order-item:last-child{
+    border:none;
+}
+.sum_order{
+    
+    text-align: right;
+}
+.price{
+    font-size:21px;
+    font-weight: 600;
+}
+.item{
+    margin-top:5px;
+}
+.btn_wait{
+    color: orangered;
+}
+.paymented{
+    color: green;
+}
+.pay-item{
+    font-weight: 600;
+}
+.paying{
+    color: red;
 }

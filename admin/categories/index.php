@@ -1,3 +1,9 @@
+<?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(isset($_SESSION["staff"])):?>
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -5,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Categories</title>
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <link rel="stylesheet" href="list_categories.css">
     <?php include_once __DIR__ . '/../../../Amazing-PHP/assets/vendor/library.php'?>
 </head>
@@ -33,31 +40,31 @@
                         <div class="category_insert">
                             <a href="/../Amazing-PHP/admin/categories/add/" class="btn btn-primary">Thêm loại sản phẩm</a>
                         </div>
-                        <div class="search_categories">
+                        <!-- <div class="search_categories">
                             <input type="text" class="form-control" id="search_category" placeholder="Tên danh mục loại hàng hóa">
-                        </div>
-                        <table class="table">
+                        </div> -->
+                        <table class="table" id="list_category">
                             <thead class="bg-dark text-white">
                                 <th width="5%">STT</th>
-                                <th width="15%">Mã loại hàng hóa</th>
+                                <th width="20%">Mã loại hàng hóa</th>
                                 <th>Danh mục loại hàng hóa</th>
                                 <th></th>
                             </thead>
                             <tbody id="result_search">
                                 <?php
                                     include_once __DIR__ . '/../connect_db.php';
-                                    $sql_sum_count = <<<EOT
-                                        SELECT COUNT(*) tonglhh FROM loaihanghoa
-                                    EOT;
-                                    $query_sum_count = mysqli_query($conn,$sql_sum_count);
-                                    $result_sum_count = mysqli_fetch_array($query_sum_count,MYSQLI_ASSOC);
-                                    $TOTAL_COUNT = $result_sum_count['tonglhh'];
-                                    $ROW_PAGE = 6;
-                                    $TOTAL_PAGE = ceil($TOTAL_COUNT / $ROW_PAGE);
-                                    $PAGE = isset($_GET['page']) ? $_GET['page'] : 1;
-                                    $OFFSET = ($PAGE - 1) * $ROW_PAGE;
+                                    // $sql_sum_count = <<<EOT
+                                    //     SELECT COUNT(*) tonglhh FROM loaihanghoa
+                                    // EOT;
+                                    // $query_sum_count = mysqli_query($conn,$sql_sum_count);
+                                    // $result_sum_count = mysqli_fetch_array($query_sum_count,MYSQLI_ASSOC);
+                                    // $TOTAL_COUNT = $result_sum_count['tonglhh'];
+                                    // $ROW_PAGE = 6;
+                                    // $TOTAL_PAGE = ceil($TOTAL_COUNT / $ROW_PAGE);
+                                    // $PAGE = isset($_GET['page']) ? $_GET['page'] : 1;
+                                    // $OFFSET = ($PAGE - 1) * $ROW_PAGE;
                                     $sql_select_category = <<<EOT
-                                        SELECT * FROM loaihanghoa LIMIT $OFFSET,$ROW_PAGE
+                                        SELECT * FROM loaihanghoa 
                                     EOT;
                                     $query_select = mysqli_query($conn,$sql_select_category);
                                     while($result = mysqli_fetch_array($query_select,MYSQLI_ASSOC)){
@@ -86,22 +93,7 @@
                                 <?php endif;?>
                             </tbody>
                         </table>
-                    </div>
-                        <div>
-                            <?php
-                                $previous = ($PAGE == 1) ? 1 :  $PAGE - 1;
-                                $next = ($PAGE == $TOTAL_PAGE) ? $PAGE : $PAGE + 1;
-                            ?>
-                            <div class="paginate">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link text-dark" href="?page=<?=$previous?>"><i class="fas fa-angle-double-left"></i></a></li>
-                                    <?php for($i = 1;$i<=$TOTAL_PAGE;$i++):?>
-                                        <li class=" page-item"><a class="page-link text-dark" href="?page=<?=$i?>"><?=$i?></a></li>
-                                    <?php endfor;?>
-                                    <li class="page-item"><a class="page-link text-dark" href="?page=<?=$next?>"><i class="fas fa-angle-double-right"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>          
+                    </div> 
                 </div>
                 <div>
                     <?php include_once __DIR__ . '/../layouts/partials/footer.php' ?>
@@ -109,26 +101,21 @@
             </div>
         </div>
     </div>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
+
     <script src="/../Amazing-PHP/assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="/../Amazing-PHP/admin/categories/list_category.js"></script>
     <script>
         $(document).ready(function(){
-            $("#search_category").keyup(function(){
-                var search = $(this).val();
-                var page = <?=$PAGE?>;
-                $.ajax({
-                    type: "GET",
-                    url: "search_category.php",
-                    data:{
-                        search,page
-                    },
-                    dataType: "json",
-                    success: function (response) {
-                        $('#result_search').html(response);
-                    }
-                });
-            });
+            $("#list_category").DataTable();
         });
     </script>
 </body>
 </html>
+<?php else: ?>
+    <script>
+        location.replace("/../../../Amazing-PHP/admin/login");
+    </script>
+<?php endif; ?>

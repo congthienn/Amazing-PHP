@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(isset($_SESSION["staff"])):?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Edit Customer</title>
     <link rel="stylesheet" href="/../Amazing-PHP/admin/customer/add/customer_add.css">
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <?php include_once __DIR__ . '/../../../../Amazing-PHP/assets/vendor/library.php'?>
     <?php
         include_once __DIR__ . '/../../connect_db.php';
@@ -65,14 +72,6 @@
                                     <label for="customer_phone"><strong>Số điện thoại</strong></label>
                                     <input type="tel" name="customer_phone" id="customer_phone" class="form-control" value="<?=$result_customer['SoDienThoai']?>">
                                 </div>
-                                <div class="form-group">
-                                    <label for="customer_company"><strong>Tên công ty (Nếu có)</strong></label>
-                                    <input type="text" name="customer_company" id="customer_company" class="form-control" value="<?=$company?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="customer_fax"><strong>Số Fax (Nếu có)</strong></label>
-                                    <input type="text" name="customer_fax" id="customer_fax" class="form-control" value="<?=$sofax?>">
-                                </div>
                                 <div>
                                     <button class="btn btn-primary" name="submit_form">Thêm mới</button>
                                 </div>
@@ -91,4 +90,10 @@
     <script src="/../Amazing-PHP/admin/customer/add/customer_add.js"></script>
 </body>
 </html>
+<?php else: ?>
+    <script>
+        location.replace("/../../../Amazing-PHP/admin/login");
+    </script>
+<?php endif; ?>
+
 

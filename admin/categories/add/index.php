@@ -1,3 +1,9 @@
+<?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(isset($_SESSION["staff"])):?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Add Category</title>
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <link rel="stylesheet" href="add_category.css">
     <?php include_once __DIR__ . '/../../../../Amazing-PHP/assets/vendor/library.php'?>
 </head>
@@ -64,3 +71,8 @@
     <script src="add_category.js"></script>
 </body>
 </html>
+<?php else: ?>
+    <script>
+        location.replace("/../../../Amazing-PHP/admin/login");
+    </script>
+<?php endif; ?>

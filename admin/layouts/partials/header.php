@@ -1,16 +1,13 @@
 <link rel="stylesheet" href="/../Amazing-PHP/admin/layouts/css/style_header.css">
 <?php
-    // if(session_id() === ""){
-    //     session_start();
-    // }
-    if(isset($_COOKIE['User']) && !empty($_COOKIE['User'])){
-        $_SESSION['user'] = $_COOKIE['User'];
-    }
-    if(isset($_COOKIE['Email']) && !empty($_COOKIE['Email'])){
-        $_SESSION['email'] = $_COOKIE['Email'];
+    if(session_id() === ""){
+        session_start();
     }
     if(isset($_COOKIE['Staff']) && !empty($_COOKIE['Staff'])){
-        $_SESSION['staff'] = $_COOKIE['Staff'];
+        $_SESSION['staff'] = $_COOKIE['staff'];
+    }
+    if(isset($_COOKIE['Email_staff']) && !empty($_COOKIE['Email_staff'])){
+        $_SESSION['email_staff'] = $_COOKIE['Email_staff'];
     }
 ?>
 <div class="header_container">
@@ -20,7 +17,7 @@
         <li class="header_item--child"><a href="/../Amazing-PHP/admin/">Trang chủ</a></li>
         <li class="header_item--child"><a href="/../Amazing-PHP/admin/products/">Sản phẩm</a></li>
         <li class="header_item--child"><a href="/../Amazing-PHP/admin/order/">Đơn hàng</a></li>
-        <li class="header_item--child"><a href="/../Amazing-PHP/user/">Giao diện user</a></li>
+        <!-- <li class="header_item--child"><a href="/../Amazing-PHP/user/">Giao diện user</a></li> -->
     </ul>
     <ul class="header_item">
         <li class="header_item--child"><i class="fas fa-search"></i></li>

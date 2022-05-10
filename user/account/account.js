@@ -7,19 +7,59 @@ $(document).ready(function(){
         $(this).addClass("hide");
         $(".container-btn").show();
     });
+    var change_password = false;
     $(".cancel").click(function() {
         var name = $(this).data("name");
         var phone = $(this).data("phone");
-        $(".name").find(".value").html(name+'<input type="hidden" name="name" value="'+name+'">');
-        $(".phone").find(".value").html(phone+'<input type="hidden" name="phone" value="'+phone+'">');
+        $(".name").find(".value").html(name+'<input type="hidden" name="name" id="name" value="'+name+'">');
+        $(".phone").find(".value").html(phone+'<input type="hidden" name="phone" id="phone" value="'+phone+'">');
         $(".edit").removeClass("hide");
         $(".container-btn").hide();
         $("#old_password, #new_password,#confirm_password").val("");
-        $(".container_changer_password").hide();
-        
+        $(".container_change_password").hide();
+        $("#error").html("");
+        change_password = false;
     });
-    $(".changer_password").click(function() {
+    $(".change_password").click(function() {
         $(".container-btn").show();
-        $(".container_changer_password").show();
+        $(".container_change_password").show();
+        change_password = true;
+    });
+    $(".save").click(function() {
+        var name = $("#name").val();
+        var phone = $("#phone").val();
+        var old_password = $("#old_password").val();
+        var new_password = $("#new_password").val();
+        var confirm_password = $("#confirm_password").val();
+        $.ajax({
+            type:"POST",
+            url:"change_user_account.php",
+            dataType:"json",
+            data:{
+                name,phone,old_password,new_password,confirm_password,change_password
+            },
+            success: function(response){
+                if(response.error){
+                    $("#error").html(response.message);
+                }else{
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Cập nhật thông tin thành công',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    $(".name").find(".value").html(name+'<input type="hidden" name="name" id="name" value="'+name+'">');
+                    $(".phone").find(".value").html(phone+'<input type="hidden" name="phone" id="phone" value="'+phone+'">');
+                    $(".edit").removeClass("hide");
+                    $(".container-btn").hide();
+                    $("#old_password, #new_password,#confirm_password").val("");
+                    $(".container_change_password").hide();
+                    $("#error").html("");
+                    change_password = false;
+                    $("#user_name").html(name);
+                }
+            }
+        });
     });
 }); 

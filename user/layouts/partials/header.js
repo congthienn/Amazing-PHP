@@ -107,33 +107,37 @@ $(document).ready(function(){
     $("#email_forget").click(function(){
         $("#error_forget").children().remove();
     });
+    var check_forget = false;
     $(".btn_forget_passwd").click(function(){
-        var email_user = $("#email_forget").val();
-        if(email_user === ""){
-            $("#error_forget").html('<span><i class="fas fa-exclamation-circle"></i> Vui lòng nhập địa chỉ email</span>');
-        }else{
-            $(".btn_login").removeClass("btn_forget_passwd").addClass("btn_click");
-            $.ajax({
-                type: "GET",
-                url: "/../../../../Amazing-PHP/user/layouts/partials/forget_password.php",
-                data:{
-                    email_user
-                },
-                success: function (response) {
-                    Swal.fire({
-                        title:"Yêu cầu đặt lại thành công",
-                        text:"Mật khẩu mới đã được gửi đến email bạn vừa nhập",
-                        icon:"success"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $("#email_forget").val("");
-                            $(".forget_password").removeClass("show_forget_password");
-                            $(".login").addClass("show_login");
-                            $(".btn_login").addClass("btn_forget_passwd").removeClass("btn_click");
-                        }
-                    });
-                }
-            });
+        if(!check_forget){
+            var email_user = $("#email_forget").val();
+            if(email_user === ""){
+                $("#error_forget").html('<span><i class="fas fa-exclamation-circle"></i> Vui lòng nhập địa chỉ email</span>');
+            }else{
+                check_forget = true;
+                $(this).removeClass("btn_forget_passwd").addClass("btn_click");
+                $.ajax({
+                    type: "GET",
+                    url: "/../../../../Amazing-PHP/user/layouts/partials/forget_password.php",
+                    data:{
+                        email_user
+                    },
+                    success: function (response) {
+                        Swal.fire({
+                            title:"Yêu cầu đặt lại thành công",
+                            text:"Mật khẩu mới đã được gửi đến email bạn vừa nhập",
+                            icon:"success"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $("#email_forget").val("");
+                                $(".forget_password").removeClass("show_forget_password");
+                                $(".login").addClass("show_login");
+                                $(".btn_login").addClass("btn_forget_passwd").removeClass("btn_click");
+                            }
+                        });
+                    }
+                });
+            }
         }
     });
     //Dang xuat

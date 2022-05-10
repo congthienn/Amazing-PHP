@@ -12,7 +12,7 @@
             'ward_name' => $row['name']
         );
     }
-    $result = '<option value="">Xã / Phường</option>';
+    $result = '<option value="">Xã / Phường *</option>';
     foreach($data_ward as $val_ward){
         $result .= '<option value="'.$val_ward['ward_id'].'">'.$val_ward['ward_name'].'</option>';
     }

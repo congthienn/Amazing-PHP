@@ -32,8 +32,6 @@
             $customer_name = inputdata($_POST['customer_name']);
             $customer_phone = inputdata($_POST['customer_phone']);
             $customer_email = inputdata($_POST['customer_email']);
-            $customer_company = inputdata($_POST['customer_company']);
-            $customer_fax = inputdata($_POST['customer_fax']);
             $customer_id = "KH".rand_string_ms();
             $customer_password = rand_string();
             $customer_password_encode = sha1(sha1(md5(md5(sha1($customer_password)))));
@@ -52,8 +50,8 @@
             }
             if($error ==0){
                 $sql_insert_customer = <<<EOT
-                    INSERT INTO khachhang(MSKH,EmailKH,HoTenKH,TenCongTy,Password,SoDienThoai,SoFax)
-                    VALUES ('$customer_id','$customer_email','$customer_name','$customer_company','$customer_password_encode','$customer_phone','$customer_fax')
+                    INSERT INTO khachhang(MSKH,EmailKH,HoTenKH,Password,SoDienThoai)
+                    VALUES ('$customer_id','$customer_email','$customer_name','$customer_password_encode','$customer_phone')
                 EOT;
                 if(mysqli_query($conn,$sql_insert_customer)){
                     echo "<script>alert('Thêm mới thông tin khách hàng thành công')</script>";

@@ -3,6 +3,7 @@
         session_start();
     }
 ?>
+<?php if(isset($_SESSION["user"])):?>
 <?php if(isset($_SESSION["cart"]) && !empty($_SESSION["cart"])):?>
 <!DOCTYPE html>
 <html lang="en">
@@ -249,6 +250,11 @@
     <script src="delivery.js"></script>
 </body>
 </html>
+<?php else:?>
+    <script>
+        location.replace("/../Amazing-PHP/user");
+    </script>
+<?php endif;?>
 <?php else:?>
     <script>
         location.replace("/../Amazing-PHP/user");

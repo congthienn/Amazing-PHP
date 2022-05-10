@@ -1,10 +1,17 @@
-<!DOCTYPE html>
+<?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(isset($_SESSION["staff"])):?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Add Customer</title>
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <link rel="stylesheet" href="customer_add.css">
     <?php include_once __DIR__ . '/../../../../Amazing-PHP/assets/vendor/library.php'?>
 </head>
@@ -45,14 +52,6 @@
                                     <label for="customer_phone"><strong>Số điện thoại</strong></label>
                                     <input type="tel" name="customer_phone" id="customer_phone" class="form-control">
                                 </div>
-                                <div class="form-group">
-                                    <label for="customer_company"><strong>Tên công ty (Nếu có)</strong></label>
-                                    <input type="text" name="customer_company" id="customer_company" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="customer_fax"><strong>Số Fax (Nếu có)</strong></label>
-                                    <input type="text" name="customer_fax" id="customer_fax" class="form-control">
-                                </div>
                                 <div>
                                     <button class="btn btn-primary" name="submit_form">Thêm mới</button>
                                 </div>
@@ -71,4 +70,10 @@
     <script src="customer_add.js"></script>
 </body>
 </html>
+<?php else: ?>
+    <script>
+        location.replace("/../../../Amazing-PHP/admin/login");
+    </script>
+<?php endif; ?>
+
 

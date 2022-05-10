@@ -1,3 +1,9 @@
+<?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(isset($_SESSION["staff"])):?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,3 +79,8 @@
     <script src="/../Amazing-PHP/admin/categories/add/add_category.js"></script>
 </body>
 </html>
+<?php else: ?>
+    <script>
+        location.replace("/../../../Amazing-PHP/admin/login");
+    </script>
+<?php endif; ?>

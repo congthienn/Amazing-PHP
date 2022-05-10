@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+ <?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(isset($_SESSION["staff"])):?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +36,7 @@
                         <div style="display: flex;justify-content: space-between;">
                             <div>
                                 <div class="card cart_sum_product">
-                                    <div class="card-header bg-secondary btn_refresh_sum_product"><i class="fas fa-sync-alt"></i> Tổng sản phẩm</div>
+                                    <div class="card-header bg-secondary btn_refresh btn_refresh_sum_product"><i class="fas fa-sync-alt"></i> Tổng sản phẩm</div>
                                     <div class="card-body sum_product"></div>
                                 </div>
                                 <div style="display: flex;margin-top: 15px;">
@@ -40,15 +46,14 @@
                                             $date_now = getdate();
                                             $month = $date_now['mon'];
                                         ?>
-                                        <div class="card-header bg-success btn_refresh_sum_revenue"><i class="fas fa-sync-alt"></i> Doanh thu tháng <?=$month?></div>
+                                        <div class="card-header bg-success btn_refresh btn_refresh_sum_revenue"><i class="fas fa-sync-alt"></i> Doanh thu tháng <?=$month?></div>
                                         <div class="card-body sum_revenue"></div>
                                     </div>
                                     <div class="card cart_sum_order">
-                                        <div class="card-header bg-primary btn_refresh_sum_order"><i class="fas fa-sync-alt"></i> Đơn hàng tháng <?=$month?></div>
+                                        <div class="card-header bg-primary btn_refresh btn_refresh_sum_order"><i class="fas fa-sync-alt"></i> Đơn hàng tháng <?=$month?></div>
                                         <div class="card-body sum_order"></div>
                                     </div>
                                 </div>
-                                
                             </div>
                             <div style="width: 500px;">
                                 <canvas id="don_hang" height="180"></canvas>
@@ -73,3 +78,8 @@
     <script src="/../Amazing-PHP/admin/index.js"></script>
 </body>
 </html>
+<?php else: ?>
+    <script>
+        location.replace("/../../../Amazing-PHP/admin/login");
+    </script>
+<?php endif; ?>

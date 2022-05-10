@@ -2,7 +2,7 @@
     include_once __DIR__ . '/../connect_db.php';
     $order_id = $_GET['order_id'];
     $sql_select_order = <<<EOT
-        SELECT dh.NgayDH,dh.NgayGH,dh.SoDonDH,dh.ThanhToan,dh.HinhThucNhanHang,dh.DiaChiNhanHang,dh.TrangThaiDH,
+        SELECT dh.NgayDH,dh.NgayGH,dh.SoDonDH,dh.ThanhToan,dh.DiaChiNhanHang,dh.TrangThaiDH,
         kh.HoTenKH,kh.SoDienThoai,nv.HoTenNV
         FROM dathang dh JOIN khachhang kh ON dh.MSKH = kh.MSKH
         JOIN nhanvien nv ON dh.MSNV = nv.MSNV WHERE SoDonDH = '$order_id';
@@ -86,7 +86,7 @@
                 $result .= '
                 <tr>
                     <td><strong>'.$i.'</strong></td>
-                    <td>
+                    <td width="36%">
                         <div><span class="title_order">'.$val['product_name'].'</span></div>
                     </td>
                     <td class="text-center">'.number_format($val['product_price'],0,',','.').'đ</td>

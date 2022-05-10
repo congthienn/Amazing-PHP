@@ -34,12 +34,12 @@
                     <div class="col l-3">
                         <div>
                             <ul class="sildebar_account">
-                                <li class="sildebar--item">Tài khoản của tôi</li>
-                                <li class="sildebar--item">Danh sách đơn hàng</li>
+                                <li class="sildebar--item"><a href="/../Amazing-PHP/user/account/"><i class="fas fa-user"></i> Tài khoản của tôi</a></li>
+                                <li class="sildebar--item"><a href="purchase.php"><i class="far fa-file"></i> Danh sách các đơn hàng</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col l-9" style="background-color: white;box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);">
+                    <div class="col l-9" >
                         <div class="container_account">
                             <div class="title">
                                 Thông tin tài khoản của bạn
@@ -54,10 +54,11 @@
                                     EOT;
                                     $query_select_user = mysqli_query($conn,$sql_select_user);
                                     $result_user = mysqli_fetch_array($query_select_user,MYSQLI_ASSOC);
+                                    $user_id = $result_user["MSKH"];
                                 ?>
                                 <div class="information--item">
                                     <div class="label-item">Tên tài khoản</div>
-                                    <div class="item-edit name"><span class="value"><?=$result_user["HoTenKH"]?> <input type="hidden" name="name" value="<?=$result_user["HoTenKH"]?>"></span>  <i class="fas fa-pen-square edit icon" data-name="name"></i></div>
+                                    <div class="item-edit name"><span class="value"><?=$result_user["HoTenKH"]?><input type="hidden" id="name" name="name" value="<?=$result_user["HoTenKH"]?>"></span>  <i class="fas fa-pen-square edit icon" data-name="name"></i></div>
                                 </div>
                                 <div class="information--item">
                                     <div class="label-item">Địa chỉ email</div>
@@ -65,17 +66,20 @@
                                 </div>
                                 <div class="information--item">
                                     <div class="label-item">Số điện thoại</div>
-                                    <div class="item-edit phone"><span class="value"><?=$result_user["SoDienThoai"]?> <input type="hidden" name="phone" value="<?=$result_user["SoDienThoai"]?>"></span> <i class="fas fa-pen-square edit icon" data-name="phone"></i></div>
+                                    <div class="item-edit phone"><span class="value"><?=$result_user["SoDienThoai"]?><input type="hidden" id="phone" name="phone" value="<?=$result_user["SoDienThoai"]?>"></span> <i class="fas fa-pen-square edit icon" data-name="phone"></i></div>
                                 </div>
-                                <div class="information--item__changerpassword">
-                                    <div class="label-item changer_password">Đổi mật khẩu </div>
+                                <div class="information--item__changepassword">
+                                    <div class="label-item change_password">Đổi mật khẩu </div>
                                     <div class="item-edit">
-                                        <div class="container_changer_password">
+                                        <div class="container_change_password">
                                                 <input type="password" class="text-password" name="old_password" id="old_password" placeholder="Mật khẩu cũ">
                                                 <input type="password" class="text-password" name="new_password" id="new_password" placeholder="Mật khẩu mới">
                                                 <input type="password" class="text-password" name="confirm_password" id="confirm_password" placeholder="Xác nhận lại mật khẩu">
                                         </div>
                                     </div>
+                                </div>
+                                <div style="margin: 10px 0;">
+                                    <span id="error"></span>
                                 </div>
                                 <div style="margin-top:20px" class="container-btn">
                                     <button class="btn-account save">Lưu thay đổi</button>
@@ -85,7 +89,6 @@
                         </div>
                     </div>
                 </div>
-               
             </div>
         </div>
     </div>

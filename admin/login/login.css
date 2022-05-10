@@ -1,0 +1,323 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:Source Sans Pro;
+}
+.container_navbar{
+  border-bottom: 1px solid lightgray;
+}
+.container_content{
+  padding: 20px 0;
+}
+.login{
+  position: relative;
+  display: block;
+}
+.btn_login_user{
+  cursor:pointer;
+}
+.login.show_login{
+  display: block;
+}
+.login_container,.forget_container ,.register_container{
+  position: fixed;
+  top: 0;left: 0;right: 0;bottom: 0;
+  background-color: #a8a8a8;
+  z-index: 5;
+}
+.login_content{
+  position: fixed;
+  width: 500px;
+  min-height: 480px;
+  background-color: white;
+  z-index: 6;
+  left: calc((100% - 500px)/2);
+  top: calc((100% - 480px)/2);
+  padding:30px;
+  border-radius: 3px;
+  box-shadow: 4px 4px 1px 1px rgba(0, 0, 0, 0.4);
+  /* animation: fade linear 0.2s; */
+}
+.register_content{
+  height: 600px;
+  top: calc((100% - 600px)/2);
+}
+.login_content--header a{
+  color: black;
+}
+.login_content--header img{
+  border: 1px solid black;
+  border-radius: 50%;
+  box-shadow: 3px 2px 1px 1px rgba(0,0,0,0.8);
+}
+.login_content--header .logo_name{
+  border-bottom: 1px solid black;
+  box-shadow: 3px 2px 1px 1px rgba(0,0,0,0.4);
+  left: -10px;
+  padding: 0 10px 0 15px;
+}
+.login_content--header{
+  display: flex;
+  align-items: center;
+}
+.text_title{
+  font-size: 30px;
+  text-transform: uppercase;
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+}
+.login_content--form{
+  margin-top: 20px;
+}
+.label_login{
+  font-size: 20px;
+  font-weight: 600;
+}
+.login_content--form{
+  padding: 0 20px;
+}
+.form--item{
+  margin-bottom: 10px;
+}
+.from--input{
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 17px;
+  padding: 0px 30px 10px 10px;
+}
+.container--input{
+  padding-top: 10px;
+  position: relative;
+}
+.from--input:focus{
+  outline: none;
+}
+.show_password{
+  position: absolute;
+  top: 11px;right: 0;
+}
+.show_password label{
+  cursor: pointer;
+}
+.btn_login{
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.btn_login:hover{
+  opacity: 0.8;
+}
+.btn_login:focus{
+  outline: none;
+}
+.remember_login{
+  margin-top: 10px;
+  font-style: italic;
+}
+.sublite_form_login{
+  margin: 10px 0;
+  font-style: italic;
+}
+#error_login, #error_forget{
+  color: red;
+  padding-top: 5px;
+  font-style: italic;
+  font-size: 16px;
+}
+.forget_password .login_content{
+  min-height: 400px;
+  top: calc((100% - 400px)/2);
+}
+.forget_password{
+  display: none;
+}
+.register_user{
+  display: none;
+}
+.register_user.show_register_user{
+  display: block;
+}
+.forget_password.show_forget_password{
+  display: block;
+}
+.text_forget_password ,.text_login_user,.text_register_user{
+  cursor: pointer;
+}
+.btn_click{
+  opacity: 0.6;
+}
+.container_user_logined{
+  position: absolute;
+  background-color: white;
+  z-index: 5;
+  display: none;
+  top: 40px;
+  left: 1px;
+  width: 200px;
+  transform-origin: 50% top;
+  animation: fade_user linear .15s;
+  box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.7);
+}
+.container_user_logined--item{
+  color: black;
+  min-height: 38px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  font-weight: 600;
+}
+.container_user_logined ul{
+  display: block;
+}
+@keyframes fade_user{
+  from{
+      transform: scale(0);
+  }to{
+      transform: scale(1);
+  }
+}
+.container_user_logined::before{
+  content: "";
+  position: absolute;
+  border: 15px solid;
+  border-color: transparent transparent white transparent;
+  top: -29px;
+  left: 80px;
+}
+.child-item__user:hover .container_user_logined{
+  display: block;
+}
+.child-item__user::after{
+  content: "";
+  width: 165px;
+  height: 20px;
+  background-color: transparent;
+  position: absolute;
+  left: 13px;
+  top: 21px;
+}
+.container_user_logined--item:hover{
+  background-color: lightgray;
+}
+.invalid-feedback{
+  font-style: italic;
+  color: red;
+  font-size: 13px;
+}
+.register_user .sublite_form_login{
+  margin: 0px;
+}
+.btn_register{
+  margin-bottom: 10px;
+}
+.btn_back_top{
+  position: fixed;
+  right: 30px;
+  bottom: 50px;
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  background: black;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+}
+.btn_back_top:focus{
+  outline: none;
+}
+.container_search_product{
+  position: absolute;
+  width: 550px;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  z-index: 3;
+  top: 60px;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.4);
+}
+.container_search_product::before{
+  content: "";
+  position: absolute;
+  border: 20px solid;
+  top: -40px;
+  border-color: transparent transparent white transparent;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.search_product--heaeder{
+  padding: 10px 20px;
+  font-size: 17px;
+  font-weight: 600;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 1px solid lightgray;
+}
+.search_product--content{
+  min-height: 120px;
+  overflow: auto;
+  max-height: 400px;
+}
+.search_product--item{
+  padding: 5px 20px;
+  display: block;
+  color: black;
+  display: flex;
+  column-gap: 10px;
+}
+.search_product--item:hover{
+  background-color: rgb(241, 241, 241);
+}
+.search_product--name{
+  font-weight: 600;
+  font-size: 16px; 
+}
+.search_product--price{
+  font-weight: 700;
+  color: red;
+  padding: 3px 0;
+}
+.icon_star{
+  color: orange;
+}
+.search_no{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.quantity_cart{
+  position: absolute;
+  width: 25px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 50%;
+  top: -10px;
+  left: 18px;
+  border: 1px solid black;
+  text-align: center;
+}
+.cart_empty{
+  color: black;
+  font-weight: 600;
+}
+.disable{
+  opacity: 0.5;
+}

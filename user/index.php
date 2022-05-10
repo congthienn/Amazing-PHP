@@ -9,9 +9,22 @@
     <link rel="stylesheet" href="/../Amazing-PHP/user/index.css">
 </head>
 <body>
+    
     <div id="header">
         <?php include_once __DIR__ . '/../user/layouts/partials/header.php' ?>
     </div>
+    <?php if(isset($_SESSION["success_order"])):?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Đặt hàng thành công',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    <?php endif;?>
+    <?php unset($_SESSION["success_order"]);?>
     <div>
         <!-- //Poster quảng cáo -->
         <div class="img_ads">

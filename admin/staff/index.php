@@ -1,10 +1,17 @@
-<!DOCTYPE html>
+<?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(isset($_SESSION["staff"])):?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazing | Staff</title>
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <link rel="stylesheet" href="staff_list.css">
     <?php include_once __DIR__ . '/../../../Amazing-PHP/assets/vendor/library.php'?>
 </head>
@@ -33,24 +40,14 @@
                         <div class="staff_list--header">
                             <a href="/../Amazing-PHP/admin/staff/add/" class="btn btn-primary">Thêm nhân viên</a>
                         </div>
-                        <div class="search_staff">
+                        <!-- <div class="search_staff">
                             <input type="text" id="search_staff" class="form-control" placeholder="Tên nhân viên - Số điện thoại">
-                        </div>
+                        </div> -->
                         <div class="staff_list--content">
                             <?php
                                 include_once __DIR__ . '/../connect_db.php';
-                                $sql_sum_count = <<<EOT
-                                    SELECT COUNT(*) tongnv FROM nhanvien
-                                EOT;
-                                $query_sum_count = mysqli_query($conn,$sql_sum_count);
-                                $result_sum_count = mysqli_fetch_array($query_sum_count,MYSQLI_ASSOC);
-                                $TOTAL_COUNT = $result_sum_count['tongnv'];
-                                $ROW_PAGE = 5;
-                                $TOTAL_PAGE = ceil($TOTAL_COUNT / $ROW_PAGE);
-                                $PAGE = isset($_GET['page']) ? $_GET['page'] : 1;
-                                $OFFSET = ($PAGE - 1) * $ROW_PAGE;
                                 $sql_select_staff = <<<EOT
-                                    SELECT * FROM nhanvien nv JOIN chucvu cv ON nv.cv_id = cv.cv_id LIMIT $OFFSET,$ROW_PAGE
+                                    SELECT * FROM nhanvien nv JOIN chucvu cv ON nv.cv_id = cv.cv_id
                                 EOT;
                                 $query_select = mysqli_query($conn,$sql_select_staff);
                                 $data_staff =[];
@@ -65,10 +62,10 @@
                                 }
                                 $i=0;
                             ?>
-                            <table class="table">
+                            <table class="table" id="list_staff">
                                 <thead class="bg-dark text-white">
                                     <th>STT</th>
-                                    <th width="12%">Mã nhân viên</th>
+                                    <th width="15%">Mã nhân viên</th>
                                     <th>Nhân viên</th>
                                     <th>Địa chỉ Email</th>
                                     <th>Số điện thoại</th>
@@ -87,31 +84,18 @@
                                             <td><span class="staff_email"><?=$val['email']?></span></td>
                                             <td><span class="staff_number"><?=$val['sodienthoai']?></span></td>
                                             <td>
-                                                <div class="action">
-                                                    <a href="/../Amazing-PHP/admin/staff/edit/?staff_id=<?=$val['msnv']?>" class="btn btn-secondary btn-sm">Chỉnh sửa</a>
-                                                    <span class="btn btn-danger btn-sm btn_delete" data-staff_id="<?=$val['msnv']?>">Xóa</span>
-                                                </div>
+                                                <?php if($val["msnv"] != "NV000001"):?>
+                                                    <div class="action">
+                                                        <a href="/../Amazing-PHP/admin/staff/edit/?staff_id=<?=$val['msnv']?>" class="btn btn-secondary btn-sm">Chỉnh sửa</a>
+                                                        <span class="btn btn-danger btn-sm btn_delete" data-staff_id="<?=$val['msnv']?>">Xóa</span>
+                                                    </div>
+                                                <?php endif;?>
                                             </td>
                                         </tr>
                                     <?php endforeach;?>
                                 </tbody>
                             </table>
-                        </div>
-                        <div>
-                            <?php
-                                $previous = ($PAGE == 1) ? 1 :  $PAGE - 1;
-                                $next = ($PAGE == $TOTAL_PAGE) ? $PAGE : $PAGE + 1;
-                            ?>
-                            <div class="paginate">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link text-dark" href="?page=<?=$previous?>"><i class="fas fa-angle-double-left"></i></a></li>
-                                    <?php for($i = 1;$i<=$TOTAL_PAGE;$i++):?>
-                                        <li class=" page-item"><a class="page-link text-dark" href="?page=<?=$i?>"><?=$i?></a></li>
-                                    <?php endfor;?>
-                                    <li class="page-item"><a class="page-link text-dark" href="?page=<?=$next?>"><i class="fas fa-angle-double-right"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>         
+                        </div>   
                     </div>
                 </div>
                 <div>
@@ -124,24 +108,17 @@
     <script src="/../Amazing-PHP/assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
     <script src="/../Amazing-PHP/assets/vendor/jquery.min.js"></script>
     <script src="/../Amazing-PHP/admin/staff/delete_staff.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
     <script>
         $(document).ready(function(){
-            $("#search_staff").keyup(function(){
-                var key = $(this).val();
-                var page = <?=$PAGE?>;
-                $.ajax({
-                    type: "GET",
-                    url: "search_staff.php",
-                    data:{
-                        key,page
-                    },
-                    dataType: "json",
-                    success: function (response) {
-                        $("#result_staff").html(response);
-                    }
-                });
-            });
+            $("#list_staff").DataTable();
         });
     </script>
 </body>
 </html>
+<?php else: ?>
+    <script>
+        location.replace("/../../../Amazing-PHP/admin/login");
+    </script>
+<?php endif; ?>

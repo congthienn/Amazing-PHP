@@ -433,7 +433,7 @@ a{
 }
 .show_password{
     position: absolute;
-    top: 20px;right: 0;
+    top: 11px;right: 0;
 }
 .show_password label{
     cursor: pointer;
@@ -502,7 +502,7 @@ a{
     left: 1px;
     width: 200px;
     transform-origin: 50% top;
-    animation: fade_user linear.15s;
+    animation: fade_user linear .15s;
     box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.7);
 }
 .container_user_logined--item{

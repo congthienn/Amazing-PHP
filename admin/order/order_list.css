@@ -112,3 +112,21 @@
 .btn_detaile_order{
     margin-right: 5px;
 }
+.sum_order{
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+}
+.cart_sum_order{
+    width: 180px;
+}
+.btn_refresh_sum_order{
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+}
+.sum_order{
+    font-weight: 600;
+    font-size: 17px;
+    text-align: center;
+}

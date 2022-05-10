@@ -33,8 +33,6 @@
             $customer_phone = inputdata($_POST['customer_phone']);
             $customer_email_new = inputdata($_POST['customer_email']);
             $customer_email_old = inputdata($_POST['customer_email_old']);
-            $customer_company = inputdata($_POST['customer_company']);
-            $customer_fax = inputdata($_POST['customer_fax']);
             $customer_id = inputdata($_POST['customer_id']);
             $error = 0;
             //Kiem tra rang buoc phia server
@@ -51,8 +49,8 @@
             }
             if($error == 0){
                 $sql_update_customer = <<<EOT
-                  UPDATE khachhang SET HoTenKH = '$customer_name',TenCongTy = '$customer_company',SoDienThoai = '$customer_phone',
-                  SoFax = '$customer_fax' WHERE MSKH = '$customer_id';
+                  UPDATE khachhang SET HoTenKH = '$customer_name',SoDienThoai = '$customer_phone',
+                  WHERE MSKH = '$customer_id';
                 EOT;
                 mysqli_query($conn,$sql_update_customer);
                 if(strcmp($customer_email_new,$customer_email_old)==0){

@@ -1,9 +1,16 @@
-<!DOCTYPE html>
+<?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(isset($_SESSION["staff"])):?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='shortcut icon' href='/../Amazing-PHP/assets/uploads/tải xuống.png'/>
     <title>Amazing | Add Products</title>
     <link rel="stylesheet" href="product_add.css">
     <?php include_once __DIR__ . '/../../../../Amazing-PHP/assets/vendor/library.php'?>
@@ -98,3 +105,8 @@
     <script src="product_add.js"></script>
 </body>
 </html>
+<?php else: ?>
+    <script>
+        location.replace("/../../../Amazing-PHP/admin/login");
+    </script>
+<?php endif; ?>
