@@ -12,7 +12,7 @@
     </a>
     <div class="slidebar_content">
         <div class="slidebar_user">
-            <i class="fas fa-user-circle"></i> <span class="text"><?=$_SESSION['user']?></span> 
+            <i class="fas fa-user-circle"></i> <span class="text"><?=$_SESSION['staff']?></span> 
         </div>
         <div class="slidebar_menu">
             <label class="slider_menu--header" data-toggle="collapse" href="#menu" for="check_show_menu">
@@ -57,8 +57,5 @@
             </div>
         </div>
     </div>
-    <!-- <div class="slider_logout">
-        <i class="fas fa-sign-out-alt nav-icon"></i><span class="text">Đăng xuất</span>
-    </div> -->
 </div>
 <script src="/../Amazing-PHP/admin/layouts/js/slidebar.js"></script>

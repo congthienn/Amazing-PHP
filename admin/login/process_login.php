@@ -2,7 +2,7 @@
     if(session_id() ===""){
         session_start();
     }
-    include_once __DIR__ . '/../../../../Amazing-PHP/admin/connect_db.php';
+    include_once __DIR__ . '/../connect_db.php';
     function inputdata($data){
         $data = trim($data);
         $data = htmlspecialchars($data);
@@ -21,25 +21,17 @@
         echo json_encode("error");
     }else if($result_user > 0){
         //Kiem tra khach hang
-        if(!isset($_SESSION['user'])){
+        if(!isset($_SESSION['staff'])){
             $_SESSION['staff'] = $result_user['HoTenNV'];
             $_SESSION['email_staff'] = $result_user['Email'];
         }else{
-            $_SESSION['staff'] = $result_usert['HoTenNV'];
+            $_SESSION['staff'] = $result_user['HoTenNV'];
             $_SESSION['email_staff'] = $result_user['Email'];
         }
         if(strcmp($remember_login,'true')==0){
             setcookie("Staff",$_SESSION['staff'],time()+(30*24*3600),'/');
             setcookie("Email_staff",$_SESSION['email_staff'],time()+(30*24*3600),'/');
         }
-        $result_json ='
-                <span><i class="fas fa-user-circle"></i> '.$_SESSION['staff'].'</span>
-                <div class="container_user_logined">
-                    <ul>
-                        <li class="container_user_logined--item"><span><i class="fas fa-user-shield"></i> Tài khoản</span></li>
-                        <li class="container_user_logined--item btn_logout"><span><i class="fas fa-sign-out-alt"></i> Đăng xuất</span></li>
-                    </ul>
-                </div>';
-        echo json_encode($result_json);
+        echo json_encode("success");
     }
 ?>

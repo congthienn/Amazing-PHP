@@ -44,7 +44,7 @@
 }
 .location_content{
     margin-top: 10px;
-    display: none;
+    display: block;
 }
 .company_location{
     margin-top: 5px;

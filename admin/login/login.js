@@ -34,7 +34,7 @@ $(document).ready(function(){
                             icon:"success"
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                location.reload();
+                                location.replace("/../Amazing-PHP/admin")
                             }
                         });;
                     }

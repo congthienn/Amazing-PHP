@@ -122,7 +122,7 @@ a:hover{
 }
 .slider_logout{
     border-top: 1px solid rgb(75, 84, 92);
-    color: var(--color);
+    /* color: var(--color); */
     display: flex;
     padding: 20px;
     align-items: center;

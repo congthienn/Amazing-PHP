@@ -4,7 +4,7 @@
         session_start();
     }
     if(isset($_COOKIE['Staff']) && !empty($_COOKIE['Staff'])){
-        $_SESSION['staff'] = $_COOKIE['staff'];
+        $_SESSION['staff'] = $_COOKIE['Staff'];
     }
     if(isset($_COOKIE['Email_staff']) && !empty($_COOKIE['Email_staff'])){
         $_SESSION['email_staff'] = $_COOKIE['Email_staff'];
@@ -22,9 +22,14 @@
     <ul class="header_item">
         <li class="header_item--child"><i class="fas fa-search"></i></li>
         <li class="header_item--child"><i class="far fa-comments"></i></li>
-        <li class="header_item--child"><i class="fas fa-bell"></i></li>
+        <li class="header_item--child">
+            <div class="slider_logout">
+                <i class="fas fa-sign-out-alt nav-icon"></i><span class="text">Đăng xuất</span>
+            </div>
+        </li>
     </ul>
 </div>
+<script src="/../Amazing-PHP/assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
 <script>
     $(document).ready(function(){
         $("#hide_slidebar").click(function(){
@@ -40,6 +45,26 @@
                 $(".main_content").removeClass('l-11-6').addClass('l-10');
                 $(".text").removeClass("hide");
             }
+        });
+        $(".slider_logout").click(function() {
+            Swal.fire({
+                title: 'Bạn muốn đăng xuất?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#333333',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Đăng xuất'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/../../../../Amazing-PHP/admin/layouts/js/logout.php",
+                        success: function(response){
+                        location.reload();
+                        }
+                    });
+                }
+            });
         });
     });
 </script>

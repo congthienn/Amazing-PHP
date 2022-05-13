@@ -1,3 +1,9 @@
+<?php
+    if(session_id() === ""){
+        session_start();
+    }
+?>
+<?php if(!isset($_SESSION["staff"])):?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +52,8 @@
     </div>
 </div>
 <script src="/../Amazing-PHP/assets/vendor/jquery.min.js"></script>
+<script src="/../Amazing-PHP/assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="login.js"></script>
 </body>
 </html>
+<?php endif; ?>

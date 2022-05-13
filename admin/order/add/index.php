@@ -162,7 +162,7 @@
                                             <input type="date" class="form-control" id="delivery_date" name="delivery_date">
                                         </div>
                                     </div>
-                                    <div class="delivery">
+                                    <!-- <div class="delivery">
                                         <div class="form-group">
                                             <label for="delivery"><strong>Hình thức nhận hàng</strong></label>
                                             <div>
@@ -173,7 +173,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="payment_status">
                                     <span><strong>Trạng thái thanh toán</strong></span>

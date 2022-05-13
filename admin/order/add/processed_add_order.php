@@ -14,7 +14,7 @@
             }
             return $str;
         }
-        $staff_email = $_SESSION['email'];
+        $staff_email = $_SESSION['email_staff'];
         $sql_select_staff = <<<EOT
             SELECT * FROM nhanvien WHERE Email = '$staff_email';
         EOT;
@@ -32,14 +32,13 @@
         }else{
             $diachinhanhang = $_POST['text_location_company'];
         }
-        $hinhthucnhanhang = $_POST['delivery'];
         $trangthaidonhang = 0;
         $product_quantity = $_POST['order_product_quantity'];
         $product_id = $_POST['order_product_id'];
         $product_price = $_POST['order_product_price'];
         $sql_insert_order = <<<EOT
-            INSERT INTO dathang(SoDonDH,MSKH,MSNV,NgayDH,NgayGH,ThanhToan,HinhThucNhanHang,DiaChiNhanHang,TrangThaiDH)
-            VALUES ('$mdh','$mskh','$staff_id','$ngaydh','$ngaygiao','$trangthai_tt','$hinhthucnhanhang','$diachinhanhang','$trangthaidonhang');
+            INSERT INTO dathang(SoDonDH,MSKH,MSNV,NgayDH,NgayGH,ThanhToan,DiaChiNhanHang,TrangThaiDH)
+            VALUES ('$mdh','$mskh','$staff_id','$ngaydh','$ngaygiao','$trangthai_tt','$diachinhanhang','$trangthaidonhang');
         EOT;
         if(mysqli_query($conn,$sql_insert_order)){
             for($i=0;$i<count($product_id);$i++){
